@@ -1,8 +1,5 @@
 package org.abstraction;
 
-import org.abstraction.AbstractClassExample;
-import org.abstraction.InterfaceExample;
-
 /**
  * Abstraction hides implementation details from user.
  * Main function in this class demonstrates usage of interface and usage of abstract class (implemented + not implemented methods)
