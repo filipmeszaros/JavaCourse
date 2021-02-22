@@ -1,5 +1,4 @@
-package abstraction;
-
+package org.abstraction;
 
 /**
  * Abstraction hides implementation details from user.

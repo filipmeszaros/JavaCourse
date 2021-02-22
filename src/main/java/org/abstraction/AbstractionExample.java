@@ -1,5 +1,7 @@
-package abstraction;
+package org.abstraction;
 
+import org.abstraction.AbstractClassExample;
+import org.abstraction.InterfaceExample;
 
 /**
  * Abstraction hides implementation details from user.
