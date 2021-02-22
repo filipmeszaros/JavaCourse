@@ -11,4 +11,10 @@ mvn install
 ```
 
 ## Usage
-Each class can be run separately from IntelliJ Idea for example.
+Each functionality is divided to different packages, that can be run separately from IntelliJ Idea for example.
+
+### List of packages and their explanation
+- **abstraction** - concept of Interfaces + Abstract classes
+- **inheritance** - concept of Inheritance
+- **packages**    - concept of Packages and Access modifiers
+- company     - simple programs
