@@ -24,4 +24,11 @@ public class AccessModifiersClass {
     public void publicMethod() {
         System.out.println("Public method of Class1 from packageC");
     }
+
+    public static void main(String args[]) {
+        AccessModifiersClass am = new AccessModifiersClass();
+
+        System.out.println("Private attribute: " + am.privateAttribute); //private attribute will work from the same class
+        am.privateMethod();                                              //private method will work from the same class
+    }
 }
