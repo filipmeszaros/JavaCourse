@@ -2,6 +2,8 @@ package org.testng;
 
 import org.testng.annotations.*;
 
+import static org.testng.Assert.assertTrue;
+
 /**
  * TestNg framework allows user to use annotations for methods, that will be executed before/after each test method or test class or test suite.
  * If you run a method from Idea, annotated methods that are related will be executed as well in this order:
@@ -89,5 +91,17 @@ public class TestNgAnnotationExamples {
     public void exampleTest5() throws InterruptedException {
         System.out.println("This is a exampleTest5 - TestNgAnnotationExamples class");
         Thread.sleep(1000);
+    }
+
+    @Test
+    public void exampleTest6Fail() {
+        System.out.println("This is a exampleTest6Fail - TestNgAnnotationExamples class");
+        assertTrue(false);
+    }
+
+    @Test(dependsOnMethods = {"exampleTest6Fail"})
+    public void exampleTest7Skipped() {
+        System.out.println("This is a exampleTest7Skipped - TestNgAnnotationExamples class");
+        assertTrue(false);
     }
 }

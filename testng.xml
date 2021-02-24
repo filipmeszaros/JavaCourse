@@ -5,7 +5,7 @@ Here you can set up if you want to run tests in parallel, and how many threads y
 You can either run whole tests, classes, or methods in parallel.
 You can also create different test suites (smoke, healthcheck, extended, regression, etc.
 -->
-<suite name="All tests" parallel="methods" thread-count="2">
+<suite name="All tests" parallel="methods" thread-count="1">
     <!-- Here you can provide test listener for TestNg -->
     <listeners>
         <listener class-name="org.testng.TestNgAdvancedListenerExample"/>
@@ -20,6 +20,8 @@ You can also create different test suites (smoke, healthcheck, extended, regress
                     <include name="exampleTest3"/>
                     <include name="exampleTest4"/>
                     <include name="exampleTest5"/>
+                    <include name="exampleTest6Fail"/>
+                    <include name="exampleTest7Skipped"/>
                 </methods>
             </class>
             <class name="org.testng.TestNgAnnotationExamples2">

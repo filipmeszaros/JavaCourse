@@ -10,6 +10,7 @@ import static org.testng.Assert.assertTrue;
  * Here are some other TestNG annotation examples that can be used.
  * @DataProvider - Provides a way of how to run one test multiple time, with different input parameters fetched from Java code
  * @Test(enabled=false) - Provides a way of how to ignore a test
+ * @Test(dependsOnMethods = {"method"}) - Provides a way of how to set a prerequisity for a test
  * @Parameter - Provides a way of how to run one test multiple times, with different input parameters fetched from XML file
  */
 public class TestNgConstructsExamples {
@@ -71,5 +72,10 @@ public class TestNgConstructsExamples {
                 {"email@domain.com", "correct", true},
                 {"email@domain.com", " ", false},
         };
+    }
+
+    @Test(dependsOnMethods = {"tryToLogIn"})
+    public void secondTest() {
+        System.out.println("This test will be always executed after tryToLoginTest, even if you execute it alone");
     }
 }
