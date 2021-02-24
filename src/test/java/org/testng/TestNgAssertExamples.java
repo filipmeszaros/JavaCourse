@@ -13,7 +13,7 @@ import static org.testng.AssertJUnit.*;
  * Hard assert -> test will stop execution when assert statement fails (other asserts are not validated) - default assert type
  * Soft assert -> test will continue with execution even when assert fails (other asserts are still validated)
  */
-public class TestngAssertExamples {
+public class TestNgAssertExamples {
 
     @Test
     public void hardAssertsExampleThatWillSucceed() {
