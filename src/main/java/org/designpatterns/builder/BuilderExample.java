@@ -3,6 +3,11 @@ package org.designpatterns.builder;
 /**
  * Builder pattern lets you to set properties of Class with multiple setters, which returns the same Class.
  * Note: I'm not sure if this pattern is called like this, but it is widely used.
+ * Pattern is used for example in {@link org.openqa.selenium.interactions.Actions}, which is used like
+ * Action a = new Action(driver);
+ * a.dragAndDrop(source, target)
+ *  .build()
+ *  .perform();
  */
 public class BuilderExample {
     private String productArea;
