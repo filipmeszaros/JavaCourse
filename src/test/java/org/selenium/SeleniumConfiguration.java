@@ -6,9 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.util.concurrent.TimeUnit;
+
 /**
- * Basic setup configuration for Selenium.
- * You need to download ChromeDriver for your version of Chrome browser that you are using
+ * Basic setup configuration for Selenium WebDriver used in our tests.
+ * You need to download ChromeDriver for your version of Chrome browser that you are using.
  */
 public class SeleniumConfiguration {
 
@@ -18,6 +20,9 @@ public class SeleniumConfiguration {
     public void setProperties() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Filip\\JavaLibraries\\chromedriver.exe");
         driver = new ChromeDriver();
+
+        //Set implicit waiting (global waiting for all operations of webdriver)
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterSuite
