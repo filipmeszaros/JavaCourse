@@ -11,6 +11,7 @@ import org.selenium.SeleniumConfiguration;
 public class Guru99HomePagePageObject extends SeleniumConfiguration {
 
     By homePageUserName = By.xpath("//table//tr[@class='heading3']");
+    By logoutButton = By.xpath("//a[text()='Log out']");
 
     public Guru99HomePagePageObject(WebDriver driver){
         this.driver = driver;
@@ -19,5 +20,10 @@ public class Guru99HomePagePageObject extends SeleniumConfiguration {
     //Get the User name from Home Page
     public String getHomePageDashboardUserName(){
         return driver.findElement(homePageUserName).getText();
+    }
+
+    //logout
+    public void logout() {
+        driver.findElement(logoutButton).click();
     }
 }

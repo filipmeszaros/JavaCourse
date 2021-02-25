@@ -16,6 +16,9 @@ public class Guru99HomePagePageFactory extends SeleniumConfiguration {
     @FindBy(xpath="//table//tr[@class='heading3']")
     WebElement homePageUserName;
 
+    @FindBy(xpath="//a[text()='Log out']")
+    WebElement logoutButton;
+
     public Guru99HomePagePageFactory(WebDriver driver){
         this.driver = driver;
 
@@ -26,5 +29,10 @@ public class Guru99HomePagePageFactory extends SeleniumConfiguration {
     //Get the User name from Home Page
     public String getHomePageDashboardUserName(){
         return homePageUserName.getText();
+    }
+
+    //logout
+    public void logout() {
+        logoutButton.click();
     }
 }

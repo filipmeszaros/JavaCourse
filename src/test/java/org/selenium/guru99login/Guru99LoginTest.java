@@ -56,6 +56,8 @@ public class Guru99LoginTest extends SeleniumConfiguration {
 
         //Verify home page text
         assertTrue(homePage.getHomePageDashboardUserName().contains("Manger Id : mgr123"));
+
+        homePage.logout();
     }
 
     /**
@@ -81,5 +83,7 @@ public class Guru99LoginTest extends SeleniumConfiguration {
 
         //Verify home page text
         assertTrue(homePage2.getHomePageDashboardUserName().contains("Manger Id : mgr123"));
+
+        homePage2.logout();
     }
 }
