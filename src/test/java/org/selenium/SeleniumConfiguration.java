@@ -23,6 +23,8 @@ public class SeleniumConfiguration {
 
         //Set implicit waiting (global waiting for all operations of webdriver)
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        driver.manage().window().maximize(); //maximize window
     }
 
     @AfterSuite

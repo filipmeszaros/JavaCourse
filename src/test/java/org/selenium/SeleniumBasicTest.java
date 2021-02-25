@@ -1,13 +1,15 @@
 package org.selenium;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -125,6 +127,9 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
         driver.get("https://the-internet.herokuapp.com");
         driver.findElement(By.linkText("Nested Frames")).click();
         driver.switchTo().frame("frame-top");
+        int framesCount = driver.findElements(By.tagName("frame")).size();  //get number of frames within top frame
+        assertEquals("Top frame should contain 3 frames", framesCount, 3);
+
         driver.switchTo().frame("frame-middle");
         frameText = driver.findElement(By.id("content")).getText();
         assertEquals("Text of middle frame is correct", frameText, "MIDDLE");
@@ -139,5 +144,145 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
         driver.switchTo().frame("frame-right");
         frameText = driver.findElement(By.tagName("body")).getText();
         assertEquals("Text of right frame is correct", frameText, "RIGHT");
+
+        driver.switchTo().defaultContent(); //switch back to default page - back from right frame
+        driver.switchTo().frame("frame-top");
+        driver.switchTo().frame(0);      //switch to first frame (left one)
+        frameText = driver.findElement(By.tagName("body")).getText();
+        assertEquals("Text of left frame is correct", frameText, "LEFT");
+
+        driver.switchTo().defaultContent();
+    }
+
+    /**
+     * Open a page, set an input text to input alert field, click on alert.
+     * Alert pop-up will appear. Before we start working with alert window, we need to switch context to it.
+     * We will switch to context of alert window and assert that text is correct, and then accept alert.
+     */
+    @Test
+    public void workingWithAlerts() {
+        final String TEXT = "Text that will be displayed in alert";
+        driver.get("http://qaclickacademy.com/practice.php");
+
+        driver.findElement(By.id("name")).sendKeys(TEXT);
+        driver.findElement(By.id("alertbtn")).click();
+
+
+        String alertMsg = driver.switchTo().alert().getText();  //we need to switch context to alert window first
+        //assert correct alert message is displayed and accept alert
+        assertTrue("Alert contains text that was set up", alertMsg.contains(TEXT));
+        driver.switchTo().alert().accept();
+        //driver.switchTo().alert().dismiss();  //another option is to dismiss alert
+    }
+
+    /**
+     * Get number of rows and columns in table, and then print third row of table
+     */
+    @Test
+    public void workingWithTables() {
+        driver.get("http://qaclickacademy.com/practice.php");
+
+        int tableRows = driver.findElement(By.id("product")).findElements(By.tagName("tr")).size();
+        int tableColumns = driver.findElement(By.id("product")).findElements(By.tagName("th")).size();
+        System.out.println("Table Rows x Columns: " + tableRows + " x " + tableColumns);
+
+        //Print second row of data
+        WebElement secondTableRow = driver.findElement(By.id("product")).findElements(By.tagName("tr")).get(2); //index 2 is 3rd row
+        System.out.println("Row 3 - column 1: " + secondTableRow.findElements(By.tagName("td")).get(0).getText());
+        System.out.println("Row 3 - column 2: " + secondTableRow.findElements(By.tagName("td")).get(1).getText());
+        System.out.println("Row 3 - column 3: " + secondTableRow.findElements(By.tagName("td")).get(2).getText());
+    }
+
+    /**
+     * On webpage, you can use keyboard keys like DOWN, UP, ENTER, ESCAPE, etc.
+     * Test will open bing page and save page title. Then we add search query, and press DOWN key twice.
+     * Each time we assert that current search query has changed. On 3rd search query we press enter, and assert
+     * that new page is opened by asserting that page title has changed (from "Bing" to "New York - Bing", or similar)
+     */
+    @Test
+    public void workingWithKeys() throws InterruptedException {
+        final String SEARCH_QUERY = "New";
+        driver.get("https://www.bing.com");
+        String originalTitle = driver.getTitle();
+
+        WebElement input = driver.findElement(By.tagName("input"));
+        input.sendKeys("New");
+        Thread.sleep(2000);     //wait for a while until autocomplete suggestions appears
+        input.sendKeys(Keys.DOWN);   //press DOWN key for first suggestion
+        String autocomplete1 = input.getText();
+        assertNotSame("Autocomplete value 1 is not the same as our search query", autocomplete1, SEARCH_QUERY);
+        input.sendKeys(Keys.DOWN);   //press DOWN key for second suggestion
+        String autocomplete2 = input.getText();
+        assertNotSame("Autocomplete value 2 is not the same as our search query", autocomplete2, SEARCH_QUERY);
+        assertNotSame("Autocomplete value 2 is not the same as autocomplete value 2 search query", autocomplete2, SEARCH_QUERY);
+
+        input.sendKeys(Keys.ENTER);  //press ENTER key for opening page with second suggestion
+        assertNotSame("Title of articles are not the same after opening specific article", driver.getTitle(), originalTitle);
+    }
+
+    /**
+     * We will write part on input to textarea, wait until autocomplete will suggest a new keyword, and then press
+     * key DOWN and ENTER, and then assert if autocomplete value is correct.
+     */
+    @Test
+    public void workingWithAutocomplete() throws InterruptedException {
+        final String AUTOCOMPLETE_VALUE = "United Kingdom (UK)";
+        driver.get("http://qaclickacademy.com/practice.php");
+
+        WebElement autocomplete = driver.findElement(By.id("autocomplete"));
+        autocomplete.sendKeys("King");
+        Thread.sleep(1000);
+        autocomplete.sendKeys(Keys.DOWN);
+        autocomplete.sendKeys(Keys.ENTER);
+        assertEquals("Autocompleted value is correct", autocomplete.getAttribute("value"), AUTOCOMPLETE_VALUE);
+    }
+
+    /**
+     * When you open Developers console in Chrome, you are able to access console in which you can execute Javascript code.
+     * Selenium allows user to run Javascript code in your browsers.
+     * This test will print some log to javascript console, then change page title, and then opens an Alert.
+     */
+    @Test
+    public void workingWithJavascriptExecutor() {
+        final String ALERT_MESSAGE = "FACEBOOK WAS HACKED";
+
+        driver.get("https://www.facebook.com");
+        String oldTitle = driver.getTitle();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("console.log('this is a log that will appear in console');");
+        js.executeScript(String.format("document.title = '%s';", ALERT_MESSAGE));
+        assertNotSame("Page title was successfully changed by javascript", oldTitle, driver.getTitle());
+        assertEquals("Page title contains correct value", driver.getTitle(), ALERT_MESSAGE);
+
+        js.executeScript("alert('XSS attack!');");
+        driver.switchTo().alert().dismiss();
+    }
+
+    /**
+     * Perform a drag & drop operation with Actions class.
+     * First you need to create instance of this class, then set up an operation, build it, and perform it.
+     */
+    @Test
+    public void workingWithDragAndDrop() {
+        driver.get("http://www.jqueryui.com/droppable/");
+        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[class='demo-frame']")));
+        Actions a = new Actions(driver);
+        WebElement source = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("droppable"));
+        a.dragAndDrop(source, target).build().perform();
+
+        driver.switchTo().defaultContent();
+    }
+
+    /**
+     * Test will create a screenshot to downloads directory
+     */
+    @Test
+    public void workingWithScreenshots() throws IOException {
+        driver.get("https://facebook.com/");
+
+        File screenshotObject = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshotObject, new File("C:\\Users\\Filip\\Downloads\\screenshot.png"));
     }
 }
