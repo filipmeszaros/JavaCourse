@@ -45,7 +45,7 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.3.0</version>
-      <scope>test</scope>
+      <!--<scope>test</scope> This will limit scope of TestNG only to tests-->
     </dependency>
 
     <!-- For TestNG listener HTML reports -->
