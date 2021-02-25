@@ -4,7 +4,13 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.selenium.SeleniumConfiguration;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * It will create test report in ./reports/ directory with current date and time, and exact number and percentages of passed/failed/skipped tests,
  * along with
  */
-public class TestNgAdvancedListenerExample implements ITestListener {
+public class TestNgAdvancedListenerExample extends SeleniumConfiguration implements ITestListener {
 
     public ExtentSparkReporter reporter;
     public ExtentReports reports;
@@ -53,6 +59,7 @@ public class TestNgAdvancedListenerExample implements ITestListener {
         reports.flush();
     }
 
+    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
         long testDuration = result.getEndMillis() - result.getStartMillis();
@@ -60,7 +67,13 @@ public class TestNgAdvancedListenerExample implements ITestListener {
         test.fail(result.getThrowable().getCause());
         test.fail(result.getThrowable());
 
-        //TODO: make a screenshot of failure
+        //Take screenshot of current screen and append it to report
+        File screenshotObject = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String screenshotName = result.getTestClass().getRealClass().getSimpleName() + "_" + result.getMethod().getMethodName() + ".jpg";
+        String absoluteScreenshotPath = REPORT_DIR + "\\" + screenshotName;
+        FileUtils.copyFile(screenshotObject, new File(absoluteScreenshotPath));
+
+        test.addScreenCaptureFromPath(absoluteScreenshotPath); //assign screenshot to failed test
         reports.flush();
     }
 

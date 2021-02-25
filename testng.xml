@@ -21,7 +21,7 @@ You can also create different test suites (smoke, healthcheck, extended, regress
                     <include name="exampleTest4"/>
                     <include name="exampleTest5"/>
                     <include name="exampleTest6Fail"/>
-                    <include name="exampleTest7Skipped"/>
+                    <include name="exampleTest7Skip"/>
                 </methods>
             </class>
             <class name="org.testng.TestNgAnnotationExamples2">
@@ -29,6 +29,8 @@ You can also create different test suites (smoke, healthcheck, extended, regress
                     <include name="example2Test1"/>
                     <include name="example2Test2"/>
                     <include name="example2Test3"/>
+                    <include name="example2Test4Fail"/>
+                    <include name="example2Test5Skip"/>
                 </methods>
             </class>
         </classes>

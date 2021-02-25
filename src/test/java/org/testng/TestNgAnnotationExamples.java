@@ -1,5 +1,7 @@
 package org.testng;
 
+import org.selenium.SeleniumBasicTest;
+import org.selenium.SeleniumConfiguration;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertTrue;
@@ -15,7 +17,7 @@ import static org.testng.Assert.assertTrue;
  * and BeforeSuite is executed as first. You will see test results from all methods.
  *
  */
-public class TestNgAnnotationExamples {
+public class TestNgAnnotationExamples extends SeleniumBasicTest {
 
     //Useful to prepare test suite
     @BeforeSuite
@@ -96,11 +98,12 @@ public class TestNgAnnotationExamples {
     @Test
     public void exampleTest6Fail() {
         System.out.println("This is a exampleTest6Fail - TestNgAnnotationExamples class");
+        driver.get("https://www.google.com");
         assertTrue(false);
     }
 
     @Test(dependsOnMethods = {"exampleTest6Fail"})
-    public void exampleTest7Skipped() {
+    public void exampleTest7Skip() {
         System.out.println("This is a exampleTest7Skipped - TestNgAnnotationExamples class");
         assertTrue(false);
     }

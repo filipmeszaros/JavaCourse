@@ -1,11 +1,14 @@
 package org.testng;
 
+import org.selenium.SeleniumBasicTest;
 import org.testng.annotations.*;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * For description, @see org.testng.TestNgAnnotationExamples, and testng.xml
  */
-public class TestNgAnnotationExamples2 {
+public class TestNgAnnotationExamples2 extends SeleniumBasicTest {
 
     @BeforeTest
     public void beforeTestAnnotation() {
@@ -53,5 +56,18 @@ public class TestNgAnnotationExamples2 {
     public void example2Test3() throws InterruptedException {
         System.out.println("This is a example2Test3 - TestNgAnnotationExamples2 class");
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void example2Test4Fail() {
+        System.out.println("This is a example2Test4 - TestNgAnnotationExamples2 class");
+        driver.get("https://www.facebook.com");
+        assertTrue(false);
+    }
+
+    @Test(dependsOnMethods = {"example2Test4Fail"})
+    public void example2Test5Skip() {
+        System.out.println("This is a example2Test5Skip - TestNgAnnotationExamples2 class");
+        driver.get("https://www.facebook.com");
     }
 }
