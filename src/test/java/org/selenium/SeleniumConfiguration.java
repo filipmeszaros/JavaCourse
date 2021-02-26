@@ -61,10 +61,10 @@ public class SeleniumConfiguration {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
         Date currentDate = new Date(System.currentTimeMillis());
 
-        //Save current time to properties file
-        properties.setProperty("last.modified.time", formatter.format(currentDate));
-        FileOutputStream propertiesOutputFile = new FileOutputStream(PROPERTIES_FILE_PATH);
-        properties.store(propertiesOutputFile, "Properties file opened and re-saved from SeleniumCofiguration.java");
+        //Save current time to properties file - currently skipped
+        //properties.setProperty("last.modified.time", formatter.format(currentDate));
+        //FileOutputStream propertiesOutputFile = new FileOutputStream(PROPERTIES_FILE_PATH);
+        //properties.store(propertiesOutputFile, "Properties file opened and re-saved from SeleniumCofiguration.java");
 
         //Set implicit waiting (global waiting for all operations of webdriver)
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
