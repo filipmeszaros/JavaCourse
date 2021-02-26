@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.testng.AssertJUnit.*;
@@ -284,5 +285,39 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
 
         File screenshotObject = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshotObject, new File("C:\\Users\\Filip\\Downloads\\screenshot.png"));
+    }
+
+    /**
+     * Selenium supports multiple waiting types.
+     * Implicit, Explicit, Fluent, sleep.
+     * Implicit waiting - globally defined waiting type for each operation of webdriver for all elements
+     *                  - slows execution of tests
+     *                  - webdriver will wait maximally for specified time and execution will stop when this time is reached
+     * Explicit waiting - locally defined waiting type for specific element, until conditions are applied
+     *                  - as soon as condition is true, waiting is stopped and test execution continues
+     *                  - you can specify multiple conditions, e.g. element is visible, not visible, url contains text, ...
+     * Fluent waiting   - defined by operation, maximum wait time, and how often is this operation controlled
+     *                  - this is widely not used
+     * Sleep            - not part of Selenium, but is part of Java. Will stop thread processing for specified amount
+     */
+    @Test
+    public void workingWithWaitings() throws InterruptedException {
+        //Set up implicit waiting for 10 seconds
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        //Set up explicit waiting of 5 seconds for each condition to be true
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2"))); //element is visible
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='loader']"))); //element is not visible, e.g. loader
+        wait.until(ExpectedConditions.alertIsPresent()); //alert is visible
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='clicker']"))); //element is now clickable
+        wait.until(ExpectedConditions.elementToBeSelected(By.xpath("//*[@id='selector']"))); //element is selected
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2)); //number of windows changes
+        wait.until(ExpectedConditions.titleIs("New title")); //title of page is
+        wait.until(ExpectedConditions.attributeToBe(By.xpath("//select"), "value", "42")); //attribute of a specific element has expected value
+        wait.until(ExpectedConditions.urlContains("order.php")); //url contains text
+
+        //Set up Sleep for half a second
+        Thread.sleep(500);
     }
 }
