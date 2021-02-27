@@ -32,13 +32,13 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.1</version>
+      <version>2.13.3</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.1</version>
+      <version>2.13.3</version>
     </dependency>
 
     <dependency>
@@ -58,7 +58,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>3.14.0</version>
+      <version>3.141.59</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io -->
@@ -94,7 +94,14 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>2.22.2</version>
+          <!-- Maven surefire plugin can run mvn test that will execute TestNg.xml file, instead of maven tests-->
+          <!-- In this case, we want to run tests in testng.xml that takes about 10 seconds to be finished, instead of mvn tests-->
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
