@@ -1,10 +1,13 @@
 package org.selenium;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -23,9 +26,10 @@ import java.util.concurrent.TimeUnit;
 public class SeleniumConfiguration {
 
     public static WebDriver driver;
+    public static Logger log = LogManager.getLogger(SeleniumConfiguration.class.getName());
 
     @BeforeSuite
-    public void configureProperties() throws IOException {
+    public void initializeDriver() throws IOException {
         //How to load properties from configuration file
         final String PROPERTIES_FILE_PATH = System.getProperty("user.dir") + "\\" + "settings.properties";
         Properties properties = new Properties();
@@ -33,28 +37,36 @@ public class SeleniumConfiguration {
         properties.load(propertiesFile);
 
         //Load property from file
-        System.out.println("Tester email: " + properties.getProperty("tester.email"));
+        log.info("Tester email: " + properties.getProperty("tester.email"));
 
         //Check what kind of browser we want to use from properties file
         //Then read driver location from properties file and set it to system
         if (properties.getProperty("browser").equalsIgnoreCase("chrome")) {
-            System.out.println("Selected browser for testing is: Chrome");
-            System.out.println("Going to set chrome.driver to: " + properties.getProperty("webdriver.chrome.driver"));
+            log.info("Selected browser for testing is: Chrome");
+            log.info("Going to set chrome.driver to: " + properties.getProperty("webdriver.chrome.driver"));
 
             System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
             driver = new ChromeDriver();
         } else if (properties.getProperty("browser").equals("firefox")) {
-            System.out.println("Selected browser for testing is: Firefox");
-            System.out.println("Going to set gecko.driver to: " + properties.getProperty("webdriver.gecko.driver"));System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
+            log.info("Selected browser for testing is: Firefox");
+            log.info("Going to set gecko.driver to: " + properties.getProperty("webdriver.gecko.driver"));System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
 
             System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
             driver = new FirefoxDriver();
         } else if (properties.getProperty("browser").equals("edge")) {
-            System.out.println("Selected browser for testing is: Microsoft Edge");
-            System.out.println("Going to set edge.driver to: " + properties.getProperty("webdriver.edge.driver"));
+            log.info("Selected browser for testing is: Microsoft Edge");
+            log.info("Going to set edge.driver to: " + properties.getProperty("webdriver.edge.driver"));
 
             System.setProperty("webdriver.edge.driver", properties.getProperty("webdriver.edge.driver"));
             driver = new EdgeDriver();
+        } else if (properties.getProperty("browser").equals("ie")) {
+            log.info("Selected browser for testing is: Internet Explorer");
+            log.info("Going to set ie.driver to: " + properties.getProperty("webdriver.ie.driver"));
+
+            System.setProperty("webdriver.ie.driver", properties.getProperty("webdriver.ie.driver"));
+            driver = new InternetExplorerDriver();
+        } else {
+            log.error("No driver specified!");
         }
 
         //Generate current time in readable format
@@ -67,13 +79,17 @@ public class SeleniumConfiguration {
         //properties.store(propertiesOutputFile, "Properties file opened and re-saved from SeleniumCofiguration.java");
 
         //Set implicit waiting (global waiting for all operations of webdriver)
+        log.info("Implicit timeout set to 10 seconds");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        log.debug("Maximizing browser window");
         driver.manage().window().maximize(); //maximize window
     }
 
     @AfterSuite
     public void closeDriver() {
+        log.info("Closing browser window");
+        log.info("");
         driver.quit();
     }
 }

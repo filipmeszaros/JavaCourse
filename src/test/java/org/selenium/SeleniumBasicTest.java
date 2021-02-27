@@ -1,6 +1,8 @@
 package org.selenium;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,6 +25,7 @@ import static org.testng.AssertJUnit.*;
  */
 public class SeleniumBasicTest extends SeleniumConfiguration {
 
+    public static Logger log = LogManager.getLogger(SeleniumBasicTest.class.getName());
 
     @Test
     public void openFacebookTest() {
@@ -69,7 +72,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
 
         Select select = new Select(driver.findElement(By.tagName("select")));
         List<WebElement> options = select.getOptions();
-        System.out.println("Options of select are: " + options.stream().map(o->o.getText()).collect(Collectors.toList()).toString());
+        log.info("Options of select are: " + options.stream().map(o->o.getText()).collect(Collectors.toList()).toString());
         
         assertEquals("Default selected option is 'Select'", select.getFirstSelectedOption().getText(), "Select");
         select.selectByIndex(2);
@@ -168,7 +171,6 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
         driver.findElement(By.id("name")).sendKeys(TEXT);
         driver.findElement(By.id("alertbtn")).click();
 
-
         String alertMsg = driver.switchTo().alert().getText();  //we need to switch context to alert window first
         //assert correct alert message is displayed and accept alert
         assertTrue("Alert contains text that was set up", alertMsg.contains(TEXT));
@@ -185,13 +187,13 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
 
         int tableRows = driver.findElement(By.id("product")).findElements(By.tagName("tr")).size();
         int tableColumns = driver.findElement(By.id("product")).findElements(By.tagName("th")).size();
-        System.out.println("Table Rows x Columns: " + tableRows + " x " + tableColumns);
+        log.info("Table Rows x Columns: " + tableRows + " x " + tableColumns);
 
         //Print second row of data
         WebElement secondTableRow = driver.findElement(By.id("product")).findElements(By.tagName("tr")).get(2); //index 2 is 3rd row
-        System.out.println("Row 3 - column 1: " + secondTableRow.findElements(By.tagName("td")).get(0).getText());
-        System.out.println("Row 3 - column 2: " + secondTableRow.findElements(By.tagName("td")).get(1).getText());
-        System.out.println("Row 3 - column 3: " + secondTableRow.findElements(By.tagName("td")).get(2).getText());
+        log.info("Row 3 - column 1: " + secondTableRow.findElements(By.tagName("td")).get(0).getText());
+        log.info("Row 3 - column 2: " + secondTableRow.findElements(By.tagName("td")).get(1).getText());
+        log.info("Row 3 - column 3: " + secondTableRow.findElements(By.tagName("td")).get(2).getText());
     }
 
     /**
@@ -284,7 +286,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
         driver.get("https://facebook.com/");
 
         File screenshotObject = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshotObject, new File("C:\\Users\\Filip\\Downloads\\screenshot.png"));
+        FileUtils.copyFile(screenshotObject, new File("logs\\screenshot.png"));
     }
 
     /**
