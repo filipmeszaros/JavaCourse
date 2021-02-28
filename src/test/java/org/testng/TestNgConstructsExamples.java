@@ -27,6 +27,7 @@ public class TestNgConstructsExamples {
 
     /**
      * This test will run multiple times with different inputs, that are provided by searchQueries data provider object.
+     * When you want to add dataprovider from other class, you can use parameter dataProviderClass = ClassName.class
      */
     @Test(dataProvider="searchQueries")
     public void testWithMultipleInputs(String searchQuery) throws InterruptedException {

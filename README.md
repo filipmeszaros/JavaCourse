@@ -21,5 +21,7 @@ Each functionality is divided to different packages, that can be run separately 
 - **streams**        - concept of Java Streams
 - **syntax**         - concept of Java syntax
 - **selenium**       - concept of Java Selenium framework used for UI testing
-- **textng**         - concept of Java TestNG framework used for testing
+- **testng**         - concept of Java TestNG framework used for testing
+- **testng**         - concept of Java API testing with RestAssured framework
+- **cucumber**       - concept of Behaviour Driven Development framework cucumber used for testing
 - **company**        - simple programs
