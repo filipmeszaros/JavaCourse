@@ -21,11 +21,17 @@ public class Loops {
         }
 
         int i = 0;
-        //While loop
+        //While loop (does not need to loop at least once, because check is at the start of loop)
         while (i < 3) {
             System.out.println("This is WHILE loop that will run 3 times - " + i);
             i++;
         }
+
+        int j = 5;
+        //Do-while loop (will loop trough at least once, because check is at the end of loop)
+        do {
+            System.out.println("This is DO-WHILE loop that will run at least once always");
+        } while (j < 2);
 
         //Usage of continue
         for (int x = 0; x < 5; x++) {
