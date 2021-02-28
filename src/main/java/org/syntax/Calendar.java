@@ -1,6 +1,5 @@
 package org.syntax;
 
-
 /**
  * Basic examples of working with Date and Calendar
  */

@@ -1,5 +1,8 @@
 package org.syntax;
 
+/**
+ * Variables are used to store simple data in program
+ */
 public class Variables {
 
     public static void main(String[] args) {

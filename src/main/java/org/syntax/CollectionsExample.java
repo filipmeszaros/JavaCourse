@@ -1,6 +1,11 @@
 package org.syntax;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Java Collections is framework that provides an architecture to store and manipulate the group of objects.

@@ -1,6 +1,5 @@
 package org.inheritance;
 
-
 /**
  * Car extends class Vehicle, which means that it will contain all attributes and all methods from class Vehicle,
  * but we can override them

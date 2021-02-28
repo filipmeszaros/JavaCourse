@@ -8,7 +8,7 @@ package org.syntax;
  * The technical term for this is: Java will throw an exception (throw an error).
  *
  * Try block     - block of code to be tested for errors while it is being executed (for code that can fail)
- * Catch block   - block of code to be executed, if an error occurs in the try block (to handle failure)
+ * Catch block   - block of code to be executed, if an error occurs in the try block (to handle failure, or multiple possible failures)
  * Finally block - block of code to be executed after try/catch, regardless of the result (for code cleanup, e.g. close DB)
  *
  * You can catch multiple exception types, but you need to start catching them from most specific ones, to least specific ones.
@@ -63,7 +63,7 @@ public class Exceptions {
     public static void exceptionDetailsExample() {
         try {
             int a = 5/0;
-        } catch (ArithmeticException exceptionName) {
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException exceptionName) {  //possible to catch 2 exception types at the same time
             System.out.println("Exception getMessage(): " + exceptionName.getMessage());
             System.out.println("Exception toString(): " + exceptionName.toString());
             System.out.println("Exception getLocalizedMessage(): " + exceptionName.getLocalizedMessage());

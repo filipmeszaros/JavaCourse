@@ -3,7 +3,6 @@ package org.selenium.guru99login;
 import org.selenium.SeleniumConfiguration;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertTrue;

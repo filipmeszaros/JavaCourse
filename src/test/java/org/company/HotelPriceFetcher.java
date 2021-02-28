@@ -1,9 +1,18 @@
 package org.company;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.WebElement;
 import org.selenium.SeleniumConfiguration;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -159,7 +168,7 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
         try {
             driver.findElement(By.xpath("//button[contains(text(), 'Accept')]")).click();
             Thread.sleep(1000);
-        } catch (NoSuchElementException|ElementNotInteractableException e) {
+        } catch (NoSuchElementException | ElementNotInteractableException e) {
             System.out.println("Cookies are already accepted!");
         }
     }
