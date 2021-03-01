@@ -6,14 +6,15 @@ Each package in class contains some JAVA principle with comments that can be use
 
 ## Installation
 1. Install an IDE (Recommended: IntelliJ IDEA)
+1. Install Java
 1. Clone git repository of this project to your local drive
 1. Open file *pom.xml* as a Idea Project and wait until maven plugins are downloaded
 1. Build whole project
 1. Download ChromeDriver WebDriver from *https://chromedriver.chromium.org/downloads* (or WebDriver for your preferred browser)
 1. Edit path of downloaded webdriver in file *settings.properties*
-1. Run desired JAVA stuff: 
-	1. Open desired class of project and run it (example: *src/main/java/org/syntax/Loops.java*)
-	1. Run whole test package directly from *testng.xml* file by right clicking on it from your IDE 
+1. Run desired JAVA stuff:
+	- Choose desired class of project and run it (example: *src/main/java/org/syntax/Loops.java*) by right clicking on class name and selecting *run*
+	- Run whole test package directly from *testng.xml* file by right clicking on it from your IDE and selecting *run*
 
 
 ## Usage
