@@ -4,11 +4,15 @@ Contains most used code constructs in one simple playground, that can be used to
 Each package in class contains some JAVA principle with comments that can be used for learning purposes.
 
 ## Installation
-Pom.xml file contains all necessary instructions for maven to install or deploy this project.
-```bash
-mvn clean
-mvn install
-```
+1. Install an IDE (Recommended: IntelliJ IDEA)
+1. Clone git repository of this project to your local drive
+1. Open *pom.xml* file as a Idea Project and wait until maven plugins are downloaded
+1. Build whole project
+1. Download ChromeDriver WebDriver from *https://chromedriver.chromium.org/downloads* (or WebDriver for preferred browser)
+1. Edit path of webdrivers in file *settings.properties*
+1. Run it 
+	1. Open desired class of project and run it (example: *src/main/java/org/syntax/Loops.java*)
+	1. Run whole test package directly from *testng.xml* file by right clicking on it from your IDE 
 
 ## Usage
 Each functionality is divided to different packages, that can be run separately from IntelliJ Idea for example.
