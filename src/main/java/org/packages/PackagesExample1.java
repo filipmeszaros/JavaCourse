@@ -1,13 +1,13 @@
 package org.packages;
 
-
 import org.packages.packageA.ClassName;  //import a single class from package
 import org.packages.packageC.*;          //import the whole package
 
 /**
  * Package in Java is used to group related classes (think of it as a folder in a file directory)
  * We use packages to avoid name conflicts.
- * There can be multiple classes in different package(see packageA,packageB).
+ * There can be multiple classes in different package (see packageC).
+ * There can be classes with identical className in different packages (see packageA and packageB).
  * Based on which class from which package we import, we can used it.
  *
  * Access modifiers (private/default/public/protected) specifies the accessibility or scope of a
@@ -20,8 +20,17 @@ import org.packages.packageC.*;          //import the whole package
  */
 public class PackagesExample1 {
     public static void main(String[] args) {
-        ClassName classObject = new ClassName();
-        classObject.method();
+        /*
+         * Because different packages (packageA, packageB), contains class with the same name (ClassName),
+         * we must specify from which package we create an object.
+         * packageA is imported     -> therefore we can create object directly without specifying package path of class
+         * packageB is not imported -> therefore we can create object only when specifying full package path of class
+         */
+        ClassName classObjectA = new ClassName();
+        classObjectA.method();
+
+        org.packages.packageB.ClassName classObjectB = new org.packages.packageB.ClassName();
+        classObjectB.method();
 
         AccessModifiersClass accessExample = new AccessModifiersClass();
 
@@ -35,6 +44,5 @@ public class PackagesExample1 {
         //accessExample.defaultMethod();     //Won't work - not in same package
         //accessExample.protectedMethod();   //Won't work - not in same package or in subclass
         accessExample.publicMethod();
-
     }
 }

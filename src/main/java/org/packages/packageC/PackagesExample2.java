@@ -3,7 +3,8 @@ package org.packages.packageC;
 /**
  * Package in Java is used to group related classes (think of it as a folder in a file directory)
  * We use packages to avoid name conflicts.
- * There can be multiple classes in different package(see packageA,packageB).
+ * There can be multiple classes in different package (see packageC).
+ * There can be classes with identical className in different packages (see packageA and packageB).
  * Based on which class from which package we import, we can used it.
  *
  * Access modifiers (private/default/public/protected) specifies the accessibility or scope of a

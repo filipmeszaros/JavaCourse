@@ -1,5 +1,15 @@
 package org.packages.packageC;
 
+/**
+ * Class with examples of different access modifiers.
+ *  Access modifiers (private/default/public/protected) specifies the accessibility or scope of a
+ *  field, method, constructor, or class.
+ *
+ *  PRIVATE   = accessible within our class only
+ *  DEFAULT   = accessible within our class + within package
+ *  PROTECTED = accessible within our class + within package + outside package by subclass only
+ *  PUBLIC    = accessible from everywhere
+ */
 public class AccessModifiersClass {
 
     //From most strict to least strict: private -> default -> protected -> public
