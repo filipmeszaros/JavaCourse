@@ -6,7 +6,7 @@ package org.abstraction;
  * You can retrieve data, known as return value, from a method.
  * Why use methods? To reuse code: define the code once, and use it many times.
  *
- * Method description:
+ * Method description is in this format:
  * <access modifiers> <special keywords> <return type> <method name> <method parameters>
  * Example:
  * public static int sumOfTwoIntegers(int number1, int number2);
