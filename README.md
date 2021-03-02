@@ -6,15 +6,19 @@ Each package in class contains some JAVA principle with comments that can be use
 
 ## Installation
 1. Install an IDE (Recommended: IntelliJ IDEA)
-1. Install Java
-1. Clone git repository of this project to your local drive
-1. Open file *pom.xml* as a Idea Project and wait until maven plugins are downloaded
-1. Build whole project
-1. Download ChromeDriver WebDriver from *https://chromedriver.chromium.org/downloads* (or WebDriver for your preferred browser)
-1. Edit path of downloaded webdriver in file *settings.properties*
-1. Run desired JAVA stuff:
-	- Choose desired class of project and run it (example: *src/main/java/org/syntax/Loops.java*) by right clicking on class name and selecting *run*
-	- Run whole test package directly from *testng.xml* file by right clicking on it from your IDE and selecting *run*
+1. Install Java JDK (Download from: https://www.openlogic.com/openjdk-downloads)
+1. Clone git repository of this project to your local drive (or download it as zip archive)
+1. Open file *pom.xml* as a Idea Project
+1. Download maven plugins
+   - automatically by IDE
+   - manually by reloading maven project
+1. Build project
+1. Optional for Selenium UI tests - set up WebDriver 
+   - download ChromeDriver WebDriver from *https://chromedriver.chromium.org/downloads* (or WebDriver for your preferred browser)
+   - edit path of downloaded webdriver in file *settings.properties*
+1. Run desired JAVA stuff
+	- choose desired class of project and run it (example: *src/main/java/org/syntax/Loops.java*) by right clicking on class name and selecting *run*
+	- run whole test package directly from *testng.xml* file by right clicking on it from your IDE and selecting *run*
 
 
 ## Usage
@@ -35,8 +39,9 @@ Each functionality is divided a to different packages, that can be run separatel
 - **company**        - simple programs
 
 
-## Recommended learning path:
+## Recommended learning path
 1. Start with Java keywords in file *JavaKeywordsEnum.java*
+1. Continue with OOP example in file *OOPExample.java*
 1. Continue with classes in package *syntax* (all of them are runnable)
 1. Continue with classes in package *packages*
 1. Continue with classes in package *inheritance*
