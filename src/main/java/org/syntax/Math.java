@@ -9,10 +9,10 @@ public class Math {
     public static void main(String... args) {
         System.out.println("Min of 5 & 10: " + java.lang.Math.max(5,10));
         System.out.println("Max of 5 & 10: " + java.lang.Math.max(5,10));
-        System.out.println("Sqrt of 64: " + java.lang.Math.sqrt(64));
+        System.out.println("Sqrt (square root) of 64: " + java.lang.Math.sqrt(64));
         System.out.println("Abs of -4.7" + java.lang.Math.abs(-4.7));
-        System.out.println("Random: " + java.lang.Math.random());
-        System.out.println("Random from 0 to 100: " + java.lang.Math.random() * 101);
+        System.out.println("Random from 0 to 1: " + java.lang.Math.random());
+        System.out.println("Random from 0 to 100: " + java.lang.Math.random() * 101); /** class @see {@link RandomNumbers} */
         System.out.println("Value 5.6 rounded to nearest integer: " + java.lang.Math.round(5.6));
         System.out.println("Value 5.6 rounded DOWN to nearest integer: " + java.lang.Math.floor(5.6));
         System.out.println("Value 5.6 rounded UP to nearest integer: " + java.lang.Math.ceil(5.6));
@@ -21,6 +21,6 @@ public class Math {
         System.out.println("Log10(1000): " + java.lang.Math.log10(1000) + " (10^X == 1000?)");
         System.out.println("5^3 = " + java.lang.Math.pow(5, 3));
         System.out.println("180 degrees to radians: " + java.lang.Math.toRadians(180));
-        System.out.println("3.14159 radians to radians: " + java.lang.Math.toDegrees(3.14159));
+        System.out.println("3.14159 radians to degrees: " + java.lang.Math.toDegrees(3.14159));
     }
 }
