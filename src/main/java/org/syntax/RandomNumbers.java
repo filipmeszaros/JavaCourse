@@ -53,17 +53,15 @@ public class RandomNumbers {
         // create byte array
         byte[] bytes = new byte[15];
 
-        // Another way of generating random Integers/Booleans/Doubles, etc. is to use Random() class from java.util package
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Random Boolean in Java: " + random.nextBoolean());
-            System.out.println("Random Integer in Java: " + random.nextInt());
-            System.out.println("Random Double in Java: " + random.nextDouble());
-            System.out.println("Random Float in Java: " + random.nextFloat());
-            System.out.println("Random Long in Java: " + random.nextLong());
-            System.out.println("Random Gaussian in Java: " + random.nextGaussian());
-            // fill array of bytes with random bytes and then print this array as string
-            random.nextBytes(bytes);
-            System.out.println("Random Bytes in Java: " + java.util.Arrays.toString(bytes));
-        }
+        // Another way of generating random Integers/Booleans/Doubles, etc. is to use class Random from java.util package
+        System.out.println("Random Boolean in Java: " + random.nextBoolean());
+        System.out.println("Random Integer in Java: " + random.nextInt());
+        System.out.println("Random Double in Java: " + random.nextDouble());
+        System.out.println("Random Float in Java: " + random.nextFloat());
+        System.out.println("Random Long in Java: " + random.nextLong());
+        System.out.println("Random Gaussian in Java: " + random.nextGaussian());
+        // fill array of bytes with random bytes and then print this array as string
+        random.nextBytes(bytes);
+        System.out.println("Random Bytes in Java: " + java.util.Arrays.toString(bytes));
     }
 }
