@@ -1,11 +1,7 @@
 package org.syntax;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 import java.util.Arrays;
-import java.util.Iterator;
 
 /**
  * Java Collections is framework that provides an architecture to store and manipulate the group of objects.
@@ -46,6 +42,13 @@ public class CollectionsExample {
 
     /**
      * List = ordered collection (also known as a sequence) that can contain duplicate elements
+     * ArrayList  - has a regular array inside it. If the array is not big enough, a new, larger array is created
+     *              to replace the old one and the old one is removed.
+     *              When it is best to use: - if you want to access random items frequently
+     *                                      - when you only need to add or remove elements at the end of the list
+     * LinkedList - stores its items in "containers". Each container has a link to the next container in the list.
+     *              When it is best to use: - when you only use the list by looping through it, instead of accessing random items
+     *                                      - when you frequently need to add/remove items from beginning/middle/end of the list
      */
     public static void listExamples() {
         ArrayList<String> list = new ArrayList<>();
@@ -69,6 +72,24 @@ public class CollectionsExample {
 
         list.clear();
         System.out.println("ArrayList size after clear: " + list.size());
+
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("1st");
+        linkedList.add("2nd");
+        linkedList.addFirst("0th"); //add item to first index
+        linkedList.addLast("last"); //add item to last index
+        //print all items of LinkedList
+        for (String element : linkedList) {
+            System.out.println("LinkedList item: " + element);
+        }
+        System.out.println("First item in linkedList that will be removed: "  + linkedList.getFirst());
+        System.out.println("Last item in linkedList that will be removed: "  + linkedList.getLast());
+        linkedList.removeFirst(); //remove first item
+        linkedList.removeLast();  //remove last item
+        //print all items of LinkedList
+        for (String element : linkedList) {
+            System.out.println("LinkedList item after delete: " + element);
+        }
     }
 
     /**
