@@ -114,7 +114,7 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
                 System.out.println("Parsing LockTrip hotel results from page number " + i);
                 lockTrip_fetchHotelPricesFromCurrentPage();
             } catch (NoSuchElementException e) {
-                System.out.println("We are on last page of hotel results");
+                System.err.println("We are on last page of hotel results");
                 break;
             }
         }
@@ -162,14 +162,14 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
             driver.findElement(By.xpath("//button/span[contains(text(), 'Accept')]")).click();
             Thread.sleep(1000);
         } catch (NoSuchElementException e) {
-            System.out.println("Cookies are already accepted!");
+            System.err.println("Cookies are already accepted!");
         }
 
         try {
             driver.findElement(By.xpath("//button[contains(text(), 'Accept')]")).click();
             Thread.sleep(1000);
         } catch (NoSuchElementException | ElementNotInteractableException e) {
-            System.out.println("Cookies are already accepted!");
+            System.err.println("Cookies are already accepted!");
         }
     }
 
@@ -215,7 +215,7 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
                 nextPageElement.click();
             } catch (NoSuchElementException e) {
                 hasNextPage = false;
-                System.out.println("We are on last page of hotel results");
+                System.err.println("We are on last page of hotel results");
             }
             i++;
             Thread.sleep(5000);

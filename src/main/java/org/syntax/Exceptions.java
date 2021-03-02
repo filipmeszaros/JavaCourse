@@ -28,7 +28,7 @@ public class Exceptions {
         try {
             exceptionThrowingExample();
         } catch (NotOldEnoughException e) {
-            System.out.println("Our custom exception was thrown");
+            System.err.println("Our custom exception was thrown");
         }
     }
 
@@ -45,12 +45,12 @@ public class Exceptions {
             System.out.println("Try to print non-existing index or divide by zero: " + myNumbers[1]/0);
         //catch first most specific exception type
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("ArrayIndexOutOfBoundsException caught: you tried to print non-existing index, didn't you?");
+            System.err.println("ArrayIndexOutOfBoundsException caught: you tried to print non-existing index, didn't you?");
         } catch (ArithmeticException e) {
-            System.out.println("ArithmeticException caught: you divided by zero, didn't you?");
+            System.err.println("ArithmeticException caught: you divided by zero, didn't you?");
         //catch least specific exception type
         } catch (Exception e) {
-            System.out.println("Other exception caught: " + e.getMessage());
+            System.err.println("Other exception caught: " + e.getMessage());
         //process a block that will be executed always, even when exception is thrown or not
         } finally {
             System.out.println("The 'try/catch' is finished");
@@ -64,11 +64,11 @@ public class Exceptions {
         try {
             int a = 5/0;
         } catch (ArithmeticException | ArrayIndexOutOfBoundsException exceptionName) {  //possible to catch 2 exception types at the same time
-            System.out.println("Exception getMessage(): " + exceptionName.getMessage());
-            System.out.println("Exception toString(): " + exceptionName.toString());
-            System.out.println("Exception getLocalizedMessage(): " + exceptionName.getLocalizedMessage());
-            System.out.println("Exception getCause(): " + exceptionName.getCause());
-            System.out.println("Exception getStackTrace(): " + exceptionName.getStackTrace());
+            System.err.println("Exception getMessage(): " + exceptionName.getMessage());
+            System.err.println("Exception toString(): " + exceptionName.toString());
+            System.err.println("Exception getLocalizedMessage(): " + exceptionName.getLocalizedMessage());
+            System.err.println("Exception getCause(): " + exceptionName.getCause());
+            System.err.println("Exception getStackTrace(): " + exceptionName.getStackTrace());
         }
     }
 

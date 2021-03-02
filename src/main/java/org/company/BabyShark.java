@@ -42,7 +42,7 @@ public class BabyShark {
         try {
             TimeUnit.MILLISECONDS.sleep(waitTime);
         } catch (InterruptedException e) {
-            System.out.println("Baby shark song failed");
+            System.err.println("Baby shark song failed");
         }
     }
 }
