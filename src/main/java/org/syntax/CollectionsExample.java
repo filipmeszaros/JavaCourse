@@ -18,11 +18,18 @@ import java.util.Iterator;
  * c) Map  - object that maps keys to values. Map cannot contain duplicate values.
  *         - types: HashMap (not synchronized == not thread safe), LinkedHashMap, TreeMap, HashTable (thread safe)
  *
+ * Collections are working with Java Wrapper classes.
+ * Wrapper classes provide a way to use primitive data types (int, boolean, double, char, ...) as objects (Integer, Boolean, Double, Character, ...)
+ * When working with Java Collections, wrapper classes as used, and not primitive types.
+ * Example:
+ * ArrayList<int> myNumbers = new ArrayList<int>();         // Invalid
+ * ArrayList<Integer> myNumbers = new ArrayList<Integer>(); // Valid
+ *
  * An Iterator is an object that can be used to loop through collections, like ArrayList and HashSet.
  * It is called an "iterator" because "iterating" is the technical term for looping.
  * Iterator contain 2 important methods:
- * - hasNext() - returns true if the iteration has more elements
- * - next()    - returns the next element in the iteration.
+ *   - hasNext() - returns true if the iteration has more elements
+ *   - next()    - returns the next element in the iteration.
  */
 public class CollectionsExample {
 
