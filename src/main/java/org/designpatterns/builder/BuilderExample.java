@@ -35,6 +35,7 @@ public class BuilderExample {
 
     /**
      * Assign default values in constructor
+     * For more details about constructors, @see class {@link org.abstraction.OOP}
      */
     public BuilderExample() {
         this.productArea = "Default product area";

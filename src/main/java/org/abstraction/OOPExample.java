@@ -65,11 +65,15 @@ public class OOPExample {
         Now we will take one of these objects (object1) and run each method of this object.
         All of these methods are implemented in class OOP.java
         */
-        object1.printWarning();   //warning will be printed to console
-        object1.printStatusMessage("STATUS message text");  //status message will be printed to console
-        boolean result = object1.isPositiveNumber(4);       //we will store result of method isPositiveNumber(4) to a variable
+        object4.printWarning();   //warning will be printed to console
+        object4.printStatusMessage("STATUS message text");  //status message will be printed to console
+        boolean result = object4.isPositiveNumber(4);       //we will store result of method isPositiveNumber(4) to a variable
         System.out.println("Result of method isPositiveNumber(4): " + result);
-        int sumOfNumbers = object1.sumOfNumbers(10, 15);    //we will store result of method sumOfNumbers(10, 15) to a variable
+        int sumOfNumbers = object4.sumOfNumbers(10, 15);    //we will store result of method sumOfNumbers(10, 15) to a variable
         System.out.println("Result of method sumOfNumbers(10, 15): " + sumOfNumbers);
+
+        //Because class variables of class OOP are public, we can access them directly
+        System.out.println("Printing class variable 'classVariableInteger' of object4: " + object4.classVariableInteger);
+        System.out.println("Printing class variable 'classVariableString' of object4: " + object4.classVariableString);
     }
 }

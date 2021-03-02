@@ -7,24 +7,23 @@ package org.abstraction;
  * Why use methods? To reuse code: define the code once, and use it many times.
  *
  * Method description is in this format:
- * <access modifiers> <special keywords> <return type> <method name> <method parameters>
+ * <access modifiers> <non-access modifiers> <return type> <method name> <method parameters>
  * Example:
  * public static int sumOfTwoIntegers(int number1, int number2);
  * private void printError(String errorDetails);
  *
  * Terminology:
- * access modifiers   - defines if method will be visible from other classes or packages (@see {@link org.packages.packageC.AccessModifiersClass})
- *                    - example: private/protected/public
- * special keywords   - defines special properties of methods
- *                    - example: static/final/abstract
- * return type        - type of value that is returned by function
- *                    - example: int/double/List<String>/...
- * method name        - name of a method in mixed case with the first letter lowercase, with the first letter of each internal word capitalized
- * method parameters  - type of parameters with their names that are passed to methods (can be empty)
- * method main        - first method that is executed when executing class
- * method overriding  - Java concept that enables you to create multiple implementations of methods with identical name and identical parameters with inheritance (@see {@link org.inheritance.InheritanceExample})
- * method overloading - Java concept that enables you to create multiple implementations of methods with identical name, but with different method parameters
- *
+ * access modifiers     - defines if method will be visible from other classes or packages (@see {@link org.packages.packageC.AccessModifiersClass})
+ *                      - example: private/protected/public/default (default is used when no access modifier is provided)
+ * non-access modifiers - defines special properties of methods
+ *                      - example: static/final/abstract/synchronized/transient/volatile
+ * return type          - type of value that is returned by function
+ *                      - example: int/double/List<String>/...
+ * method name          - name of a method in mixed case with the first letter lowercase, with the first letter of each internal word capitalized
+ * method parameters    - type of parameters with their names that are passed to methods (can be empty)
+ * method main          - first method that is executed when executing class
+ * method overriding    - Java concept that enables you to create multiple implementations of methods with identical name and identical parameters with inheritance (@see {@link org.inheritance.InheritanceExample})
+ * method overloading   - Java concept that enables you to create multiple implementations of methods with identical name, but with different method parameters (@see this class)
  */
 public class MethodExamples {
 

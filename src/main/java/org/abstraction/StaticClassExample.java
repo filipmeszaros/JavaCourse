@@ -25,6 +25,7 @@ public class StaticClassExample {
     /**
      * This is a constructor, that is called after creating an object of class StaticClassExample.
      * Because static variables are shared across all objects of the same class, we will use it to track number of created objects
+     * For more details about constructors, @see class {@link OOP}
      */
     StaticClassExample() {
         numberOfObjects++;  //this variable is shared across all objects
@@ -99,9 +100,10 @@ public class StaticClassExample {
     }
 
     /**
-     * Static classes are used to create nested classes (class inside a class)
+     * Static classes are used to create nested classes (class inside a class), that can be accessed without creating an object of outer class.
+     * If you don't want outside objects to access the inner class, declare the class as private.
      */
-    static class MyNestedClass{
+    private static class MyNestedClass{
         //non-static method
         public void printConstant() {
 

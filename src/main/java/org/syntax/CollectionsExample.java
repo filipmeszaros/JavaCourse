@@ -17,6 +17,12 @@ import java.util.Iterator;
  *         - types: HashSet, LinkedHashSet, TreeSet
  * c) Map  - object that maps keys to values. Map cannot contain duplicate values.
  *         - types: HashMap (not synchronized == not thread safe), LinkedHashMap, TreeMap, HashTable (thread safe)
+ *
+ * An Iterator is an object that can be used to loop through collections, like ArrayList and HashSet.
+ * It is called an "iterator" because "iterating" is the technical term for looping.
+ * Iterator contain 2 important methods:
+ * - hasNext() - returns true if the iteration has more elements
+ * - next()    - returns the next element in the iteration.
  */
 public class CollectionsExample {
 

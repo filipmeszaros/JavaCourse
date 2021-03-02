@@ -60,13 +60,19 @@ public class Arrays {
     }
 
     /**
-     * You can create class inside a class. For more details @see class {@link org.abstraction.StaticClassExample}
+     * You can create a class inside a class.
+     * If you create a static class, it can be accessed without creating an object of outer class.
+     * For more details @see class {@link org.abstraction.StaticClassExample}.
+     * If you don't want outside objects to access the inner class, declare the class as private.
      */
-    static class InnerClass {
+    private static class InnerClass {
         int number;
         String string;
 
-        //Constructor is called each time object is created
+        /**
+         * This is a constructor, which is called each time object is created
+         * For more details about constructors, @see class {@link org.abstraction.OOP}
+         */
         InnerClass(int num, String str) {
             this.number = num;
             this.string = str;
