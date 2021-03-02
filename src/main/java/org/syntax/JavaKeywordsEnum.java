@@ -52,7 +52,7 @@ public enum JavaKeywordsEnum {
     SUPER("Refers to superclass (parent) objects"),                 /** @see {@link org.inheritance.InheritanceExample} and {@link org.inheritance.Car} */
     SWITCH("Selects one of many code blocks to be executed"),       /** @see {@link Switch} */
     SYNCHRONIZED("A non-access modifier, which specifies that methods can only be accessed by one thread at a time"),
-    THIS("Refers to the current object in a method or constructor"),
+    THIS("Refers to the current object in a method or constructor"),/** @see {@link org.abstraction.OOP} */
     THROW("Creates a custom error"),                                /** @see {@link Exceptions} */
     THROWS("Indicates what exceptions may be thrown by a method"),  /** @see {@link Exceptions} */
     TRANSIENT("A non-accesss modifier, which specifies that an attribute is not part of an object's persistent state"),

@@ -50,7 +50,7 @@ public class RandomNumbers {
             System.out.println("Generating random number between 7 - 12: " + rand);
         }
 
-        // create byte array
+        // create byte array for purposes of generating random bytes
         byte[] bytes = new byte[15];
 
         // Another way of generating random Integers/Booleans/Doubles, etc. is to use class Random from java.util package
