@@ -6,8 +6,8 @@ package org.abstraction;
  *            - each interface can be implemented in different java class, that uses "implements InterfaceName" in class definition
  *            - to access the interface methods, the interface must be "implemented"
  *
- * Interface class => provides full abstraction (methods cannot be implemented in interface)
- *                 => @see difference between Abstract class in {@link AbstractClassExample}
+ * Interface class - provides full abstraction (methods cannot be implemented in interface)
+ *                 - @see difference between Abstract class in {@link AbstractClassExample}
  */
 public interface InterfaceExample {
     void interfaceMethodUnimplemented();
