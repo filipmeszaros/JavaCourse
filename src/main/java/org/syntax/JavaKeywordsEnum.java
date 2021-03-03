@@ -30,7 +30,7 @@ public enum JavaKeywordsEnum {
     FLOAT("A data type that can store whole numbers from 3.4e−038 to 3.4e+038"),         /** @see {@link Variables} */
     FOR("Create a for loop"),                 /** @see {@link Loops} */
     GOTO("Not in use, and has no function"),
-    IF("Makes a conditional statement"),
+    IF("Makes a conditional statement"),      /** @see {@link Operators} */
     IMPLEMENTS("Implements an interface"),    /** @see {@link org.abstraction.AbstractionExample} */
     IMPORT("Used to import a package, class or interface"),
     INSTANCEOF("Checks whether an object is an instance of a specific class or an interface"),

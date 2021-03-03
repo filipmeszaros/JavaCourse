@@ -3,7 +3,7 @@ package org.syntax;
 /**
  * Enum is a special "class" that represents a group of constants (unchangeable variables, like final variables).
  * This is an example of simple enum.
- * For advanced example of enum, @see class {@link JavaKeywordsEnum}
+ * For advanced example of enum, @see classes {@link JavaKeywordsEnum} and {@link JavaConceptsEnum}
  */
 public enum Enums {
     MONDAY,
