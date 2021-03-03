@@ -12,10 +12,17 @@ import java.util.stream.Stream;
  * Java Streams represents a sequence of elements and supports different kind of operations
  * to perform computations upon those elements.
  * Streams can greatly reduce code, and speed up code execution, because they scan and work with collection in parallel.
+ * Streams works with lambda expressions:
+ *  - Lambda expression is a short block of code which takes in parameters and returns a value.
+ *  - Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+ *  - Left side of lambda expression is parameter that is needed for an expression
+ *  - Right side of lambda expression is body which specifies action of lambda expression
+ *  - Example: s -> System.out.println(s)
+ *
  *
  * Working with streams:
  * 1, Create a stream
- * 2a, Do intermediate stream operation that will transfer one stream to another (@see {@link IntermediateOperationsExamples})
+ * 2a, Do intermediate stream operation that will transfer one stream to another ({@link IntermediateOperationsExamples})
  *     Examples:
  *        - filter()    - filters stream elements based on a given predicate
  *        - map()       - modifies stream elements based on a application of given function

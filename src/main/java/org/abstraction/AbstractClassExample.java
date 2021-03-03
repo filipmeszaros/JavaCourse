@@ -10,11 +10,13 @@ package org.abstraction;
  *                 - can contain methods, that are implemented
  *                 - each abstract class can be implemented in different java class, that uses "extends AbstractClassName" in class definition
  * Abstract method - method that can only be used in an abstract class, and it does not have a body (body is provided by the subclass)
- *
+ *                 - if our class contains at least abstract method, whole class must be abstract.
  * Abstract class - provides partial abstraction (some methods can be implemented, while another don't have to be implemented in abstract class)
  *                - @see difference between Interface in {@link InterfaceExample}
  */
 public abstract class AbstractClassExample {
+    private int abstractClassVariable;
+
     //method that is not implemented
     public abstract void abstractClassMethodUnimplemented();
 

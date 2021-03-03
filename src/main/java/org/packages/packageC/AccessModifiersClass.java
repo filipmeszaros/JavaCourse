@@ -5,7 +5,7 @@ package org.packages.packageC;
  *  Access modifiers (private/default/public/protected) specifies the accessibility or scope of a
  *  field, method, constructor, or class.
  *
- *  PRIVATE   = accessible within our class only
+ *  PRIVATE   = accessible within our class only (not accessible from other classes, or other packages)
  *  DEFAULT   = accessible within our class + within package
  *  PROTECTED = accessible within our class + within package + outside package by subclass only
  *  PUBLIC    = accessible from everywhere

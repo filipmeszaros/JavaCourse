@@ -2,6 +2,7 @@ package org.abstraction;
 
 /**
  * Abstraction hides implementation details from user.
+ * Abstraction provides definition of what object does (interface), but not how it does (implementation).
  * Main function in this class demonstrates usage of interface and usage of abstract class (implemented + not implemented methods)
  */
 public class AbstractionExample extends AbstractClassExample implements InterfaceExample {

@@ -29,16 +29,50 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotSame;
 
 /**
- * Basic constructions in Seleniu, each in separate test.
+ * Basic constructions of Selenium, each in separate test.
+ * Some small documentation of WebDriver methods:
+ *  - getCurrentUrl()       - gets current URL
+ *  - getPageSource()       - gets source code of page
+ *  - navigate().back()     - back button
+ *  - navigate().forward()  - forward button
+ *  - close()               - closes browser window
+ *  - quit()                - closes all browses windows opened by Selenium
+ *  - findElement(locator)  - finds first WebElement of given locator on page
+ *  - findElements(locator) - finds all WebElements of given locator on page
+ *  - findElement(locator).isDisplayed() - returns true if element is displayed
  */
 public class SeleniumBasicTest extends SeleniumConfiguration {
 
     public static Logger log = LogManager.getLogger(SeleniumBasicTest.class.getName());
 
+    /**
+     * Open URL, then open another URL, then go back, then go forward, and assert URLs and titles.
+     */
     @Test
-    public void openFacebookTest() {
-        driver.get("https://www.facebook.com");
+    public void openURLsBackAndForward() {
+        final String FACEBOOK_URL = "https://www.facebook.com/";
+        final String GOOGLE_URL   = "https://www.google.com/";
+        driver.get(FACEBOOK_URL);
         assertTrue("Facebook page was successfully opened", driver.getTitle().contains("Facebook"));
+        assertEquals("Facebook URL is OK", FACEBOOK_URL, driver.getCurrentUrl());
+        driver.get(GOOGLE_URL);
+        assertTrue("Google page was successfully opened", driver.getTitle().contains("Google"));
+        assertEquals("Google URL is OK", GOOGLE_URL, driver.getCurrentUrl());
+        driver.navigate().back();    //back button
+        assertEquals("URL after going back is OK", FACEBOOK_URL, driver.getCurrentUrl());
+        driver.navigate().forward(); //forward button
+        assertEquals("URL after going forward is OK", GOOGLE_URL, driver.getCurrentUrl());
+    }
+
+    /**
+     * Check if alert button is displayed on page
+     */
+    @Test
+    public void visibilityOfElements() {
+        driver.get("https://www.rahulshettyacademy.com/AutomationPractice/");
+
+        WebElement alertButton = driver.findElement(By.id("alertbtn"));
+        assertTrue("WebElement of alert button is displayed", alertButton.isDisplayed());
     }
 
     /**
