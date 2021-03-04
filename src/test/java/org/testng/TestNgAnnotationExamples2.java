@@ -46,13 +46,13 @@ public class TestNgAnnotationExamples2 extends SeleniumBasicTest {
         System.out.println("@AfterMethod annotation - TestNgAnnotationExamples2 class");
     }
 
-    @Test
+    @Test(groups={"Smoke", "Login"})   //will assign test to group Smoke and Login
     public void example2Test1() throws InterruptedException {
         System.out.println("This is a example2Test1 - TestNgAnnotationExamples2 class");
         Thread.sleep(1000);
     }
 
-    @Test
+    @Test(timeOut = 60000)   //sets timeout of this test to 60 seconds
     public void example2Test2() throws InterruptedException {
         System.out.println("This is a example2Test2 - TestNgAnnotationExamples2 class");
         Thread.sleep(1500);

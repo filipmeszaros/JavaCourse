@@ -1,9 +1,9 @@
 package org.testng;
 
 /**
- * TestNG listener can be applied to tests that are being executed (either in testng.xml or in project configuration).
+ * TestNG listener can be applied to tests that are being executed (either in testng.xml or in project configuration: Run > Edit Configurations > Listeners).
  * It listens and executes specific methods after each state, e.g.: test was executed, test failed, test passed, etc.
- * It is useful to
+ * It is useful when you need to automatically execute something on each test success/failure, or test start/end, etc.
  */
 public class TestNgListenerExample implements ITestListener {
 

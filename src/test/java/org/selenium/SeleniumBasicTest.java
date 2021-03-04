@@ -3,12 +3,7 @@ package org.selenium;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -40,10 +35,39 @@ import static org.testng.AssertJUnit.assertNotSame;
  *  - findElement(locator)  - finds first WebElement of given locator on page
  *  - findElements(locator) - finds all WebElements of given locator on page
  *  - findElement(locator).isDisplayed() - returns true if element is displayed
+ *  - findElement(locator).isSelected()  - returns true if element is selected
+ *  - manage().window().maximize()       - maximize window
+ *  - manage().window().minimize()       - minimize window
+ *  - manage().deleteAllCookies()        - deletes cookies
+ *  - manage().deleteCookieNamed("cookieName") - delete cookie with given name
+ *  - manage().window().getSize().getHeight()  - get window height
+ *  - manage().window().getSize().getWidth()   - get window width
+ *  - getWindowHandles()                       - get window handles for working with multiple windows
+ *  - switchTo().window("windowName")          - switch to window with given name
+ *  - navigate().refresh()                     - refreshes window
+ *  - switchTo().newWindow(WindowType.TAB)     - opens new window in Selenium 4
+ *  - switchTo().frame("frameName")            - switch Selenium context to iframe/frame
+ *  - switchTo().defaultContent()              - switch Selenium context to default window
  */
 public class SeleniumBasicTest extends SeleniumConfiguration {
 
     public static Logger log = LogManager.getLogger(SeleniumBasicTest.class.getName());
+
+    @Test
+    public void workingWithWebDriver() {
+        driver.get("https://www.google.com/search?=selenium");
+        driver.manage().window().maximize();
+
+        driver.manage().addCookie(new Cookie("CUSTOM_COOKIE", "myCookieValue", "/"));
+        Set<Cookie> cookies = driver.manage().getCookies();
+        for (Cookie cookie : cookies) {
+            System.out.println("Google cookies: " + cookie.toString());
+        }
+        driver.manage().deleteAllCookies();
+
+        System.out.println("window width is: " + driver.manage().window().getSize().getWidth());
+        System.out.println("window height is: " + driver.manage().window().getSize().getHeight());
+    }
 
     /**
      * Open URL, then open another URL, then go back, then go forward, and assert URLs and titles.
@@ -141,9 +165,8 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
      */
     @Test
     public void workingWithMultipleWindows() {
-        driver.get("https://the-internet.herokuapp.com");
-        driver.findElement(By.linkText("Multiple Windows")).click();
-        driver.findElement(By.linkText("Click Here")).click(); //will open second tab
+        driver.get("https://the-internet.herokuapp.com/windows");
+        driver.findElement(By.linkText("Click Here")).click(); //click will open second tab
 
         //Get window handles
         Set<String> ids = driver.getWindowHandles();
@@ -161,6 +184,37 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
     }
 
     /**
+     * This test find a footer element, and then finds all links in footer (working with limited scope).
+     * Then we open all footer links on new tab with keypress CTRL + ENTER
+     * Then we close all tabs except one
+     */
+    @Test
+    public void workingWithMultipleWindows2() {
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+
+        //limit scope to footer and find all links (tag <a>) in a footer
+        WebElement footer = driver.findElement(By.xpath("//*[contains(@class,'footer_top')]"));
+        List<WebElement> linksInFooter = footer.findElements(By.tagName("a"));
+        //Open all links in NEW tab
+        for (WebElement link : linksInFooter) {
+            System.out.println("Opening link in footer in new tab: " + link.getAttribute("href"));
+            link.sendKeys(Keys.CONTROL, Keys.ENTER);
+        }
+
+        //Get all tabs except current one, loop through them and close them all
+        String originalHandle = driver.getWindowHandle();
+
+        for(String handle : driver.getWindowHandles()) {
+            if (!handle.equals(originalHandle)) {
+                driver.switchTo().window(handle);
+                driver.close();
+            }
+        }
+
+        driver.switchTo().window(originalHandle);
+    }
+
+    /**
      * Before Selenium can work with elements on a specific frame, you must switch to it.
      * Open a page with nested frames, and switch between those frames.
      * Page outline:
@@ -170,8 +224,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
     @Test
     public void workingWithFrames() {
         String frameText;
-        driver.get("https://the-internet.herokuapp.com");
-        driver.findElement(By.linkText("Nested Frames")).click();
+        driver.get("https://the-internet.herokuapp.com/nested_frames");
         driver.switchTo().frame("frame-top");
         int framesCount = driver.findElements(By.tagName("frame")).size();  //get number of frames within top frame
         assertEquals("Top frame should contain 3 frames", framesCount, 3);
@@ -306,6 +359,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
 
     /**
      * Perform a drag & drop operation with Actions class.
+     * Action class is used in Selenium to work with mouse, drag&drop, context click, hover, etc.
      * First you need to create instance of this class, then set up an operation, build it, and perform it.
      */
     @Test
@@ -316,8 +370,16 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
         WebElement source = driver.findElement(By.id("draggable"));
         WebElement target = driver.findElement(By.id("droppable"));
         a.dragAndDrop(source, target).build().perform();
-
         driver.switchTo().defaultContent();
+
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        WebElement alertInput = driver.findElement(By.xpath("//input[@id='name']"));
+        //Move to element, click, press & hold shift key and enter an input
+        a.moveToElement(alertInput).click().keyDown(Keys.SHIFT).sendKeys("uppercased string because of shift").build().perform();
+        System.out.println("Entered text is: " + alertInput.getAttribute("value"));
+
+        a.moveToElement(alertInput).doubleClick().build().perform();  //perform double click
+        a.moveToElement(alertInput).contextClick().build().perform(); //perform context click (right click)
     }
 
     /**
@@ -342,9 +404,11 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
      *                  - you can specify multiple conditions, e.g. element is visible, not visible, url contains text, ...
      * Fluent waiting   - defined by operation, maximum wait time, and how often is this operation controlled
      *                  - this is widely not used
-     * Sleep            - not part of Selenium, but is part of Java. Will stop thread processing for specified amount
+     * Sleep            - not part of Selenium, but is part of Java. Will stop thread processing for specified amount of time
+     *
+     * Note: this test is only a demonstration of waiting functions. Test does not work and will fail, that's why it is disabled.
      */
-    @Test
+    @Test(enabled=false)
     public void workingWithWaitings() throws InterruptedException {
         //Set up implicit waiting for 10 seconds
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

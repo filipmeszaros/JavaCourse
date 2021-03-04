@@ -15,6 +15,6 @@ public class Log4JExample {
         log.debug("Debug message");
         log.info("Info message");
         log.error("Error message");
-        log.fatal("Fatal message");
+        log.fatal("Fatal message!!!");
     }
 }
