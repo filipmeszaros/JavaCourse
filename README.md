@@ -36,6 +36,7 @@ Each functionality is divided a to different packages, that can be run separatel
 - **testng**         - concept of Java TestNG framework used for testing
 - **apitesting**     - concept of Java API testing with RestAssured framework
 - **cucumber**       - concept of Behaviour Driven Development framework *cucumber* used for testing
+- **database**       - concept of working with SQL database
 - **company**        - simple programs
 
 
