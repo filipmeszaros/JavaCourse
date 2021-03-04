@@ -69,7 +69,7 @@ public class SeleniumCrossBrowserTest {
      */
     @AfterTest
     public void closeBrowser() {
-        driver.close();
+        driver.quit();
     }
 
     /**

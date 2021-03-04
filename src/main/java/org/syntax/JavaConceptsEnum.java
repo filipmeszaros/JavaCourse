@@ -37,6 +37,9 @@ public enum JavaConceptsEnum {
     PARAMETRIZED_TEST("Parameterized tests allow a developer to run the same test over and over again using different values."),
     POLYMORPHISM("This Java OOP concept lets programmers use the same word to mean different things in different contexts. Polymorphism in Java works by using a reference to a parent class to affect an object in the child class. Another form of polymorphism in Java are: method overloading and method overriding."), /** {@link org.inheritance.InheritanceExample} */
     REGULAR_EXPRESSIONS("A regular expression is a sequence of characters that forms a search pattern."), /** {@link RegularExpressions} */
+    SELENIUM("Framework for automating browsers (Chrome, Edge, Firefox, ...) for UI (or even non-UI with headless option) testing."),
+    SELENIUM_GRID("Selenium Grid is used to scale Selenium tests by distributing and running tests on several machines and manage multiple environments from a central point, making it easy to run the tests against a vast combination of browsers/OS."),
+    SELENIUM_HEADLESS("Headless option of Selenium is an option where UI tests will be run without opening browser UI."),
     SPECIALIZATION("Specialization means creating new subclasses from an existing class. Is opposite of generalization"), /** {@link org.inheritance.InheritanceExample} and class {@link org.inheritance.Car} */
     STATIC_CLASS("Static class (nested class) is a class within another class"), /** {@link org.abstraction.StaticClassExample} */
     STATIC_METHOD("Method that can be executed without creating an object of the class first"), /** {@link org.abstraction.StaticClassExample} */
