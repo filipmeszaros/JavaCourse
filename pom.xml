@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+pom.xml is configuration file for maven (build management tool) with list of all dependencies and their versions.
+In maven, you can set up which repositories (dependencies) will be downloaded for project.
+Can be integrated with Continuous Integration tools (Jenkins, Teamcity, etc.)
+Allows to run tests - all methods with suffix "Test"
+Allows to run tests trough testng.xml file with Maven Surefire plugin - plugin allows to run testng.xml instead of all methods with suffix "Test".
+Terminology:
+  - Artefact - file (usually *.jar file) which is deployed from maven repository
+  - GroupID - unique identification of project. Should be set up with java package naming conventions.
 
+Maven commands:
+mvn clean
+mvn build                         - build project
+mvn test                          - run all test methods
+mvn test -Dtest=MobileTest        - runs only tests in MobileTest class
+mvn test -PSmokeTests             - runs only tests configured in pom.xml in SmokeTests profile
+mvn test -Dbrowser=chrome         - runs maven with parameter browser=chrome
+mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromeheadless (without UI - headless mode)
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
