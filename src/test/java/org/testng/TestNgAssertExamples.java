@@ -16,6 +16,9 @@ import static org.testng.AssertJUnit.assertNotNull;
  *
  * Hard assert -> test will stop execution when assert statement fails (other asserts are not validated) - default assert type
  * Soft assert -> test will continue with execution even when assert fails (other asserts are still validated)
+ *
+ * Important: there are multiple asserts package in TestNG, and they have different syntax, so watch out for which one
+ * do you import and use. See method {@link TestNgAssertExamples#differentAsserts()}
  */
 public class TestNgAssertExamples {
 
@@ -85,5 +88,20 @@ public class TestNgAssertExamples {
         //You need to run soft assert manually, otherwise test will pass even if asserts failed!!!
         //All assertion errors will be printed
         softassert.assertAll();
+    }
+
+    /**
+     * This test demonstrates different syntax of asserts with identical name in different packages.
+     * You must check what assert you import, because on import you use, different syntax may be used.
+     * Also, be aware of not switching actual and expected objects. It will help you out with debugging application.
+     */
+    @Test
+    public void differentAsserts() {
+        //This assert from package org.testng.AssertJUnit uses syntax: assertEquals(message, expected, actual);
+        org.testng.AssertJUnit.assertEquals("Strings are equal", "str1", "str1");
+        //This assert from package org.testng.Assert uses syntax: assertEquals(actual, expected, message)
+        org.testng.Assert.assertEquals("str1", "str1", "Strings are equal");
+        //This assert from package org.junit.Assert uses syntax: assertEquals(message, expected, actual
+        org.junit.Assert.assertEquals("Strings are equal", "str1", "str1");
     }
 }
