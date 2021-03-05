@@ -93,4 +93,40 @@ public class JSONPayloads {
                 "  ]\r\n" +
                 "}\r\n";
     }
+
+    /**
+     * JSON payload for JIRA request to login
+     * @param username  JIRA username
+     * @param password  JIRA password
+     * @return JSON payload for JIRA request to login
+     */
+    public static String getLoginToJiraRequest(String username, String password) {
+        return "{\r\n" +
+                    "\"username\": \"" + username + "\",\r\n" +
+                    "\"password\": \"" + password + "\"\r\n" +
+                "}";
+    }
+
+    /**
+     * JSON payload for JIRA request to create JIRA issue.
+     * Created from: https://developer.atlassian.com/server/jira/platform/jira-rest-api-examples/
+     * @param projectKey  project key for JIRA
+     * @param issueSummary Summary of issue
+     * @param issueDescription Description of issue
+     * @return JSON payload for JIRA create issue request
+     */
+    public static String getCreateJiraIssueRequest(String projectKey, String issueSummary, String issueDescription) {
+        return "{\r\n" +
+                "   \"fields\": {\r\n" +
+                        "\"project\": {\r\n" +
+                            "\"key\": \"" + projectKey + "\"\r\n" +
+                        "},\r\n" +
+                        "\"summary\": \"" + issueSummary + "\",\r\n" +
+                        "\"description\": \"" + issueDescription + "\",\r\n" +
+                        "\"issuetype\": {\r\n"+
+                            "\"name\": \"Bug\"\r\n" +
+                        "}\r\n" +
+                    "}\r\n" +
+                "}";
+    }
 }
