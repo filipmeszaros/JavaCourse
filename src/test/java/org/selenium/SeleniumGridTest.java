@@ -66,7 +66,7 @@ public class SeleniumGridTest {
      * Note: this test will fail and therefore is ignored. You need to setup Selenium Grid Hub and Node for it to properly function.
      */
     @Test(enabled = false)
-    public void stupidTest() {
+    public void simpleRemoteTest () {
         driver.get("https://www.facebook.com");
         assertTrue("Page url contains facebook", driver.getCurrentUrl().contains("facebook"));
     }
