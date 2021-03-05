@@ -2,7 +2,7 @@ package org.apitesting;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
-import org.apitesting.payloads.Payload;
+import org.apitesting.payloads.JSONPayloads;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -50,7 +50,7 @@ public class BasicAPITest {
                 .log().all()                                 //log all
                 .queryParam("key", "qaclick123")  //set query parameter that will allow us to use this API
                 .header("Content-Type", "application/json")    //set header
-                .body(Payload.getAddPlaceRequest())         //set body payload
+                .body(JSONPayloads.getAddPlaceRequest())    //set body payload
                 .when()                                     //when() marks sending of request
                 .post("maps/api/place/add/json")         //run POST to a given endpoint
                 .then()                                     //then() marks validation of response
@@ -82,7 +82,7 @@ public class BasicAPITest {
                 .log().all()                                       //log all
                 .queryParam("key", "qaclick123")        //set query parameter that will allow us to use this API
                 .header("Content-Type", "application/json")  //set header
-                .body(Payload.updatePlaceRequest(this.place_id, "UPDATED ADDRESS 123"))  //set body payload with updated address
+                .body(JSONPayloads.getUpdatePlaceRequest(this.place_id, "UPDATED ADDRESS 123"))  //set body payload with updated address
                 .when()                                           //when() marks sending of request
                 .put("maps/api/place/update/json")             //run PUT to a given endpoint
                 .then()                                          //then() marks validation of response
@@ -134,7 +134,7 @@ public class BasicAPITest {
         String response = given()                           //given() marks all input details
                 .log().all()                                //log all
                 .queryParam("key", "qaclick123")  //set query parameter that will allow us to use this API
-                .body(Payload.deletePlaceRequest(this.place_id))  //set body payload with updated address
+                .body(JSONPayloads.getDeletePlaceRequest(this.place_id))  //set body payload with updated address
                 .when()                                     //when() marks sending of request
                 .delete("maps/api/place/delete/json")    //run DELETE to a given endpoint
                 .then()                                    //then() marks validation of response
