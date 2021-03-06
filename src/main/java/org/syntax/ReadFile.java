@@ -19,6 +19,10 @@ import java.util.Scanner;
  * Loading examples:
  * this.getResource("resource_file.txt");
  * ClassName.getClass().getResource("resource_file.txt");
+ *
+ * What we want to do, is to avoid using file paths like this:
+ * C:/Users/user/IdeaProject/projectname/src/main/resource/org/packagename/filename.txt
+ * Using of this file wouldn't work for other users, or for other platforms! It would work only for you.
  */
 public class ReadFile {
     Scanner myReader;
