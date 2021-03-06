@@ -1,0 +1,2 @@
+This is a resource file located in directory /src/main/resources/org/syntax
+Name of file is: resource_file.txt

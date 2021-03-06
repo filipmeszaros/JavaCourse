@@ -139,7 +139,7 @@ public class JIRAAutomation {
     /**
      * Add an attachment to JIRA issue with id 10000
      * Before we add a comment to JIRA, issue must be created, therefore this test method depends on method that will create issue.
-     * File is get from resources folder in the same package structure as testing class
+     * File is get from resources folder in the same package structure as testing class (see class {@link org.syntax.ReadFile})
      */
     @Test(dependsOnMethods = "createJIRAIssue")
     public void addJiraAttachmentToIssue() {
