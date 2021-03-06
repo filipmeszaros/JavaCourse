@@ -1,0 +1,1 @@
+JIRA attachment file located in src/test/resources/org/apitesting folder

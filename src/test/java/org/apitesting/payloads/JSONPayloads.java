@@ -1,7 +1,7 @@
 package org.apitesting.payloads;
 
 /**
- * Payloads (data) used in API test.
+ * Payloads (data) used in API tests.
  * Class contains multiple static methods which returns string of payloads.
  * Static methods are used so that you don't need to create object of this class to access them (see class {@link org.abstraction.StaticClassExample}
  */
@@ -127,6 +127,21 @@ public class JSONPayloads {
                             "\"name\": \"Bug\"\r\n" +
                         "}\r\n" +
                     "}\r\n" +
+                "}";
+    }
+
+    /**
+     * JSON payload for JIRA request to add a comment to JIRA issue restricted just to Administrators.
+     * @param jiraComment comment that will be added to JIRA
+     * @return JSON payload for adding a comment to JIRA issue
+     */
+    public static String getCreateJiraCommentRequest(String jiraComment) {
+        return "{\r\n" +
+                "   \"body\": \"" + jiraComment + "\",\r\n" +
+                "   \"visibility\": {\r\n" +
+                "       \"type\": \"role\",\r\n" +
+                "       \"value\": \"Administrators\"\r\n" +
+                "   }\r\n" +
                 "}";
     }
 }
