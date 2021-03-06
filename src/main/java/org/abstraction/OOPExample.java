@@ -18,6 +18,7 @@ package org.abstraction;
  *   - Class variables  - data variables (or attributes) that can be used when object is created from a class
  *   - Class methods    - functions that can be executed when object is created from a class
  *   - Method parameter - parameter that is passed to a method (can be int, String, or whatever else)
+ *   - Method variable  - variable that is available only within a method. That's why multiple variables with identical name can be available in a single class
  *   - "this" keyword   - keyword this refers to the current object in a method or constructor (@see class {@link OOP})
  *   - Constructor      - method that is called as soon as object of a class is created. Always has a name identical to name of class
 
@@ -26,8 +27,16 @@ package org.abstraction;
  */
 public class OOPExample {
 
+    /*
+    Class variables - each class can have class variables, that can be used when object is created from class
+    */
+    private int classVariableInteger;
+    private String classVariableString;
+
     //This method will be executed when we run class OOPExample
     public static void main(String[] args) {
+
+        System.out.println("Name of this class is: " + OOPExample.class.getName());
 
         /*
         We create object 'object1' of class 'OOP' with no parameters passed to constructor

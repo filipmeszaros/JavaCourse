@@ -18,6 +18,7 @@ package org.abstraction;
  *   - Class variables  - data variables (or attributes) that can be used when object is created from a class
  *   - Class methods    - functions that can be executed when object is created from a class
  *   - Method parameter - parameter that is passed to a method (can be int, String, or whatever else)
+ *   - Method variable  - variable that is available only within a method. That's why multiple variables with identical name can be available in a single class
  *   - "this" keyword   - keyword this refers to the current object in a method or constructor
  *   - Constructor      - method that is called as soon as object of a class is created. Always has a name identical to name of class
  *
@@ -27,7 +28,7 @@ package org.abstraction;
 public class OOP {
 
     /*
-    Class variables - each class has a variables, that can be used when object is created from class
+    Class variables - each class can have class variables, that can be used when object is created from class
     */
     public int classVariableInteger;
     public String classVariableString;
@@ -87,22 +88,28 @@ public class OOP {
     isPositiveNumber()    - returns true if number is >= 0, otherwise returns false
     */
     public void printClassVariables() {
+        int methodVariable = 0; //this is a method variable that is readable only within this method
         System.out.println("Class variables are: '" + classVariableString + "' and " + classVariableInteger);
     }
 
     public void printWarning() {
+        int methodVariable = 0; //this is a method variable that is readable only within this method
         System.out.println("Warning! This is printed in method of object OOP");
     }
 
     public void printStatusMessage(String message) {
+        String methodVariable = "This is a method variable that is readable only within this method";
         System.out.println(message);
     }
 
     public int sumOfNumbers(int num1, int num2) {
+        String methodVariable = "This is a method variable that is readable only within this method";
         return num1 + num2;
     }
 
     public boolean isPositiveNumber(int number) {
+        String methodVariable = "This is a method variable that is readable only within this method";
+
         if (number >= 0)
             return true;
         else
