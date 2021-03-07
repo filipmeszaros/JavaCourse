@@ -52,6 +52,7 @@ public class MethodExamples {
 
     /**
      * Function with no return type (void) and one method parameter of type String
+     * @param details String of details that will be printed out to standard output
      */
     public static void printDebug(String details) {
         System.out.println("Printing log with details: " + details);
@@ -59,6 +60,9 @@ public class MethodExamples {
 
     /**
      * Function with return type (int) and two method parameter of type int
+     * @param number1 number1
+     * @param number2 number2
+     * @return sum of numbers passed to function
      */
     public static int sumOfTwoNumbers(int number1, int number2) {
         System.out.println("Method overloading: calling a function with parameters of type int");
@@ -69,6 +73,9 @@ public class MethodExamples {
      * Function with return type (double) and two method parameter of type double
      * This is an example of method overloading:
      * We have function with identical name, but return value and method parameters are of different type.
+     * @param number1 number1
+     * @param number2 number2
+     * @return sum of numbers passed to function
      */
     public static double sumOfTwoNumbers(double number1, double number2) {
         System.out.println("Method overloading: calling a function with parameters of type double");
@@ -78,6 +85,7 @@ public class MethodExamples {
     /**
      * Function that will print array of strings passed to function.
      * We don't care how many of Strings will be passed to this function.
+     * @param stringsArray array of Strings that will be printed to standard output
      */
     public static void printStrings(String... stringsArray) {
         for (String str : stringsArray) {

@@ -41,9 +41,8 @@ public class Guru99LoginPagePageObject extends SeleniumConfiguration {
 
     /**
      * This POM method will be exposed in test case to login in the application
-     * @param strUserName
-     * @param strPasword
-     * @return
+     * @param strUserName username
+     * @param strPasword password
      */
     public void loginToGuru99(String strUserName,String strPasword) {
         //Fill user name

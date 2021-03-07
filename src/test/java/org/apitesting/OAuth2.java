@@ -35,6 +35,8 @@ import static org.testng.AssertJUnit.assertTrue;
  *  7, This access_token parameter is used in all other request, so that we will stay authenticated in LockTrip
  *
  * Note: this test will fail because OAuth2.0 contract changed in LockTrip application since this test was written.
+ * OAuth2.0 tutorials: https://medium.com/tech-learn-share/getting-access-token-in-oauth2-0-using-rest-assured-225593b8fc1a
+ *                     https://devqa.io/rest-assured-oauth2-workflow-examples/
  */
 public class OAuth2 extends SeleniumConfiguration {
 
@@ -52,7 +54,7 @@ public class OAuth2 extends SeleniumConfiguration {
 
     /**
      * This test demonstrates steps 1-4 of class description.
-     * @throws InterruptedException
+     * @throws InterruptedException for purposes of Thread.sleep()
      */
     @Test(dependsOnMethods = "getCoursesWithoutAuthorization")
     public void getOAuthCode() throws InterruptedException {

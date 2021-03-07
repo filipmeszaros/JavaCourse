@@ -23,6 +23,7 @@ public class Encapsulation {
      * Encapsulation provides a way of hiding variable name and age from object of class Encapsulation.
      * You won't be able to access class variables from object directly (e.g. object.name or object.age) because they are private,
      * but you need to call getName() or getAge() methods which are public, to access class variables indirectly.
+     * @param args array of String arguments passed to a function
      */
     public static void main(String[] args) {
         Encapsulation object = new Encapsulation();

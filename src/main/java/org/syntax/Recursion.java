@@ -27,6 +27,7 @@ public class Recursion {
 
     /**
      * Function will print Hello World x number of times
+     * @param x how many times "Hello World!" should be printed out
      */
     public static void helloWorld(int x) {
         if (x < 1)
@@ -42,6 +43,8 @@ public class Recursion {
      * fibonacci(0) = 0
      * fibonacci(1) = 1
      * fibonacci(7) = 13
+     * @param n fibonacci number we want to calculate
+     * @return fibonacci number of param n
      */
     public static int fibonacci(int n) {
         if (n == 0)
@@ -58,6 +61,8 @@ public class Recursion {
      * factorial(4) = 4*3*2*1
      * factorial(1) = 1
      * factorial(0) = 1
+     * @param n number of factorial(n) we want to calculate
+     * @return factorial of n
      */
     public static int factorial(int n) {
         if (n == 0 || n == 1)

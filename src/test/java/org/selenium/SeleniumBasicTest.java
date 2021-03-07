@@ -296,6 +296,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
      * Test will open bing page and save page title. Then we add search query, and press DOWN key twice.
      * Each time we assert that current search query has changed. On 3rd search query we press enter, and assert
      * that new page is opened by asserting that page title has changed (from "Bing" to "New York - Bing", or similar)
+     * @throws InterruptedException when Thread.sleep() fails
      */
     @Test
     public void workingWithKeys() throws InterruptedException {
@@ -321,6 +322,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
     /**
      * We will write part on input to textarea, wait until autocomplete will suggest a new keyword, and then press
      * key DOWN and ENTER, and then assert if autocomplete value is correct.
+     * @throws InterruptedException when Thread.sleep() fails
      */
     @Test
     public void workingWithAutocomplete() throws InterruptedException {
@@ -358,8 +360,8 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
     }
 
     /**
-     * Perform a drag & drop operation with Actions class.
-     * Action class is used in Selenium to work with mouse, drag&drop, context click, hover, etc.
+     * Perform a drag and drop operation with Actions class.
+     * Action class is used in Selenium to work with mouse, drag and drop, context click, hover, etc.
      * First you need to create instance of this class, then set up an operation, build it, and perform it.
      */
     @Test
@@ -384,6 +386,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
 
     /**
      * Test will create a screenshot to downloads directory
+     * @throws IOException when screenshot saving failed
      */
     @Test
     public void workingWithScreenshots() throws IOException {
@@ -407,6 +410,7 @@ public class SeleniumBasicTest extends SeleniumConfiguration {
      * Sleep            - not part of Selenium, but is part of Java. Will stop thread processing for specified amount of time
      *
      * Note: this test is only a demonstration of waiting functions. Test does not work and will fail, that's why it is disabled.
+     * @throws InterruptedException when Thread.sleep() fails
      */
     @Test(enabled=false)
     public void workingWithWaitings() throws InterruptedException {

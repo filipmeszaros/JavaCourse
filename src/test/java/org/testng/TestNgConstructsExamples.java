@@ -49,6 +49,10 @@ public class TestNgConstructsExamples {
 
     /**
      * This test will run multiple times with different combination of email and password, that are provided by data provider
+     * @param email email
+     * @param password password
+     * @param shouldLogin true in case of email and password combination should login user
+     * @throws InterruptedException for purposes of Thread.sleep()
      */
     @Test(dataProvider="loginData")
     public void tryToLogIn(String email, String password, boolean shouldLogin) throws InterruptedException {
@@ -65,6 +69,7 @@ public class TestNgConstructsExamples {
 
     /**
      * Format of data provider is: email, password, boolean value if login details are OK
+     * @return object of data provider
      */
     @DataProvider(name = "loginData")
     public Object[][] loginDataProvider() {

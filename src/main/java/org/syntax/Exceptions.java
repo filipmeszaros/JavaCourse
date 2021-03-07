@@ -74,6 +74,7 @@ public class Exceptions {
 
     /**
      * Will throw our custom exception. When method throws an exception, it must be stated in method name with keyword THROWS
+     * @throws NotOldEnoughException throws this exception when age is below 18
      */
     public static void exceptionThrowingExample() throws NotOldEnoughException {
         int age = 12;

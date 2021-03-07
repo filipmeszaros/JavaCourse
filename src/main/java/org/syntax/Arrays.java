@@ -20,7 +20,7 @@ public class Arrays {
         colors[0] = "Red";      //defines first value in array
         colors[1] = "Blue";
         colors[2] = "Green";
-        //colors[3] = "Black";  //This will throw an Exception because we have only 3 elements in array
+        //colors[3] = "Black";  //This will throw an Exception because we can have only 3 elements in array
 
         System.out.println("First item of array cars is cars[0]: " + cars[0]);
         System.out.println("Last item of array numbers is: " + numbers[numbers.length - 1]);

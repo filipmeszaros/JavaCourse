@@ -40,7 +40,7 @@ public class SeleniumGridTest {
 
     /**
      * Set up remote driver for test, with hardcoded URL and set up for Chrome
-     * @throws MalformedURLException
+     * @throws MalformedURLException when URL of RemoteWebDriver is malformed
      */
     @BeforeTest
     public void setUpRemoteDriver() throws MalformedURLException {

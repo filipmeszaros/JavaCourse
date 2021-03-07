@@ -55,16 +55,15 @@ public class Guru99LoginPagePageFactory extends SeleniumConfiguration {
 
     /**
      * This POM method will be exposed in test case to login in the application
-     * @param strUserName
-     * @param strPasword
-     * @return
+     * @param strUserName username of guru99 web
+     * @param strPassword password of guru99 web
      */
-    public void loginToGuru99(String strUserName,String strPasword){
+    public void loginToGuru99(String strUserName,String strPassword){
         //Fill user name
         this.setUserName(strUserName);
 
         //Fill password
-        this.setPassword(strPasword);
+        this.setPassword(strPassword);
 
         //Click Login button
         this.clickLogin();

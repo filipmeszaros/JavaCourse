@@ -89,6 +89,7 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
 
     /**
      * Prepare results - sort according to lowest price and select maximum number of results on page
+     * @throws InterruptedException for purposes of Thread.sleep()
      */
     public static void lockTrip_prepareResults() throws InterruptedException {
         driver.findElement(By.xpath("//div[@id='select-rows']")).click();
@@ -258,8 +259,9 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
      * Step 2: process each line of Booking results and check if result is already saved (or if similar hotel is in LockTrip)
      * If yes - skip, hotel is already saved
      * If no - save only Booking price
+     * @throws FileNotFoundException when loading of CSV file fails
      */
-    public static void both_compareAndSavePriceComparison() throws FileNotFoundException, UnsupportedEncodingException {
+    public static void both_compareAndSavePriceComparison() throws FileNotFoundException {
 
         System.out.println("Saving price comparison results to a CSV file");
         int numberOfOverlappingHotels = 0;
@@ -309,7 +311,6 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
         } //end of: Step 1: Process each line of LockTrip results and check if identical hotel is in Booking
 
 
-
         //Step 2: process each line of Booking results and check if result is already saved (or if similar hotel is in LockTrip)
         for (Map.Entry<String, Double> bookingHotel : BookingPrices.entrySet()) {
             bookingHotelName = bookingHotel.getKey();
@@ -345,9 +346,9 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
 
     /**
      * Returns true if hotels are with the same name
-     * @param firstHotel
-     * @param secondHotel
-     * @return
+     * @param firstHotel name of first hotel
+     * @param secondHotel name of second hotel
+     * @return true in case of hotel names are identical
      */
     public static boolean areTheSameHotels(String firstHotel, String secondHotel) {
         String updatedfirstHotel = firstHotel.trim().replaceAll("[^A-Za-z0-9]", "");
@@ -359,8 +360,8 @@ public class HotelPriceFetcher extends SeleniumConfiguration {
 
     /**
      * Replace newlines and commas from hotel name
-     * @param hotelName
-     * @return
+     * @param hotelName name of hotel
+     * @return trimmed hotel name (trailing and leading spaces are excluded)
      */
     public static String trimHotelName(String hotelName) {
         return hotelName.replaceAll("[\n\r]", "").replace(",","").trim();
