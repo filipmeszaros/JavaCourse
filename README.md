@@ -8,11 +8,11 @@ Each package in class contains some JAVA principle with comments that can be use
 1. Install an IDE (Recommended: IntelliJ IDEA)
 1. Install Java JDK (Download from: https://www.openlogic.com/openjdk-downloads)
 1. Clone git repository of this project to your local drive (or download it as zip archive)
-1. Open file *pom.xml* as a Idea Project
+1. Open file *pom.xml* as an Idea Project
 1. Download maven plugins
    - automatically by IDE
-   - manually by reloading maven project
-1. Build project
+   - manually by reloading maven project (Maven > Reload All Maven Projects)
+1. Build project (Build > Build Project)
 1. Optional for Selenium UI tests - set up WebDriver 
    - download ChromeDriver WebDriver from *https://chromedriver.chromium.org/downloads* (or WebDriver for your preferred browser)
    - edit path of downloaded webdriver in file *settings.properties*
@@ -41,8 +41,9 @@ Each functionality is divided a to different packages, that can be run separatel
 
 
 ## Recommended learning path
-1. Start with Java keywords in file *JavaKeywordsEnum.java*
-1. Continue with OOP example in file *OOPExample.java*
+1. Start with learning about Java concepts from file *JavaConceptsEnum.java*
+1. Continue with learning about Java keywords from file *JavaKeywordsEnum.java*
+1. Continue with OOP example from files *OOPExample.java* and *OOP.java*
 1. Continue with classes in package *syntax* (all of them are runnable)
 1. Continue with classes in package *packages*
 1. Continue with classes in package *inheritance*
