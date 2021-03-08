@@ -5,18 +5,21 @@
 Feature: Application Login
 
   #Scenario represents a testcase of your feature
+  @SmokeTest
   Scenario: HomePage admin login
     Given User is on LockTrip landing page
     When User logs into application with username "admin" and password "passwd"
     Then HomePage of LockTrip is populated
     And Admin cards are displayed are "true"
 
+  @SmokeTest
   Scenario: HomePage support login
     Given User is on LockTrip landing page
     When User logs into application with username "support" and password "suppword"
     Then HomePage of LockTrip is populated
     And Admin cards are displayed are "false"
 
+  @RegressionTest
   Scenario Outline: Parametrized login test
     Given User is on LockTrip landing page
     When User logs into application with parametrized username <username> and password <password>
