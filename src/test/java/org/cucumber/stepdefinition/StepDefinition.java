@@ -17,10 +17,12 @@ import org.apache.logging.log4j.Logger;
  *  - able to run tests from TestNG (@see {@link org.cucumber.tests.CucumberTestRunner})
  *
  * Terminology:
+ *  - Feature             - represents business requirement of your application
+ *  - Scenario            - represents a testcase of your feature
  *  - Feature file        - *.feature file defines all test cases that we are covering (manual or automated)
  *                        - all tests can be run from this file
  *  - StepDefinition file - java class with code that is covering automated tests
- *                        - can be created with Chrome plugin "Tidy Gherkin" or if we run a test
+ *                        - can be created with Chrome plugin "Tidy Gherkin" or if we run a test (step definition will be printed to console)
  *  - TestRunner file     - JUnit testrunner for executing tests, in which we annotate Features file and StepDefinition files
  *
  * User stories or requirements are written in form of:
@@ -34,7 +36,7 @@ import org.apache.logging.log4j.Logger;
  *   I want wallet balances to update
  *
  *
- * Test Cases are written in form of:
+ * Test Cases (test scenarios) are written in format of:
  *   Given (what you need to have to perform action)
  *   When (performs actions)
  *   Then (the desired outcome for the user - contains asserts)

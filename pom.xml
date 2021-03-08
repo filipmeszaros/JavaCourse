@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-pom.xml is configuration file for maven (build management tool) with list of all dependencies and their versions.
-In maven, you can set up which repositories (dependencies) will be downloaded for project.
-Can be integrated with Continuous Integration tools (Jenkins, Teamcity, etc.)
-Allows to run tests - all methods with suffix "Test"
-Allows to run tests trough testng.xml file with Maven Surefire plugin - plugin allows to run testng.xml instead of all methods with suffix "Test".
+Maven is a software build management tool, with central repository to get all dependencies.
+pom.xml is configuration file for maven with list of all dependencies and their versions.
+Advantages:
+ - you can set up which repositories (dependencies) will be downloaded for our project
+ - maintaining common structure across the organization
+ - can be integrated with Continuous Integration tools (Jenkins, Teamcity, etc.)
+ - allows to run tests - all methods with suffix "Test"
+ - Allows to run tests trough testng.xml file with Maven Surefire plugin - plugin allows to run testng.xml instead of all methods with suffix "Test".
 Terminology:
   - Artefact - file (usually *.jar file) which is deployed from maven repository
   - GroupID - unique identification of project. Should be set up with java package naming conventions.
+  - archetype:generate - Generates a new project from an archetype
 
 Maven commands:
 mvn clean
@@ -17,6 +21,7 @@ mvn test -Dtest=MobileTest        - runs only tests in MobileTest class
 mvn test -PSmokeTests             - runs only tests configured in pom.xml in SmokeTests profile
 mvn test -Dbrowser=chrome         - runs maven with parameter browser=chrome
 mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromeheadless (without UI - headless mode)
+
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -39,6 +44,7 @@ mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromehead
     <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
+  <!-- <dependencies> tag contains all dependencies specified by <dependency> tag that maven will download and use in our project -->
   <dependencies>
     <!-- JUnit: framework for unit tests -->
     <dependency>

@@ -1,5 +1,10 @@
+#Feature represents business requirement of your application.
+#Feature file is used to define and run testing scenarios (both manually and automatically).
+#It defines each scenario with given/when/then syntax, which is automated in Step definition implementation.
+#Each feature is therefore mapped with step definition, that provides implementation.
 Feature: Application Login
 
+  #Scenario represents a testcase of your feature
   Scenario: HomePage admin login
     Given User is on LockTrip landing page
     When User logs into application with username "admin" and password "passwd"

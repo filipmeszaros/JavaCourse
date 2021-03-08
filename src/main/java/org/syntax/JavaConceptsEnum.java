@@ -14,13 +14,18 @@ public enum JavaConceptsEnum {
     ACCESS_MODIFIERS("They decide the scope of a data member, method or class. Four types of access specifiers: public, private, protected, default (we do not need to explicitly mention default - if we do not specify access specifier, it is considered as default)."), /** {@link org.packages.packageC.AccessModifiersClass} */
     CLASS("Template (blueprint) for building an Object. This template contains class variables, and class methods (functions)."), /** {@link org.abstraction.OOPExample} */
     CONSTRUCTOR("Constructor is a method which name is same as class name and it does not return any value. This method is called as soon as object of class is created. Constructor can contain parameters (such constructors are known as parametrized constructor). Each class can contain multiple constructors with different parameters."), /** {@link org.abstraction.OOP} */
+    CUCUMBER("Cucumber is the BDD (Behaviour Driven Development) framework for running automated tests."),
     DESERIALIZATION("In Rest Assured context is a process of converting a response body in form of JSON with JackSon/Gson/Johnzon framework (or with JAXB framework for XML) into a Java object. Opposite concept is serialization."),
     DESIGN_PATTER("A design pattern is a well-described solution to a common software problem."),
     DTO("Data Transfer Object Pattern. A Data Transfer Object is, essentially, like a data structure. It should not contain any business logic but should contain serialization and deserialization mechanisms."),
     DYNAMIC_POLYMORPHISM("Dynamic polymorphism is a process in which a call to an overridden method is resolved at runtime. Also called runtime polymorphism."),  /** {@link org.inheritance.InheritanceExample} */
     ENCAPSULATION("This is the practice of keeping fields within a class private, then providing access to them via public methods. It’s a protective barrier that keeps the data and code safe within the class itself."), /** {@link org.abstraction.Encapsulation} */
+    FRAMEWORK("Frameworks are bundles of prewritten code used by developers to create apps using selected programming language."),
     GENERALIZATION("Generalization is the process of extracting shared characteristics from two or more classes, and combining them into a generalized superclass. Is opposite concept of specialization"), /** {@link org.inheritance.InheritanceExample} and class {@link org.inheritance.Vehicle} */
     GETTERS("Getters are public methods of class that are retrieving private class variables to achieve Encapsulation"), /** {@link org.abstraction.Encapsulation} */
+    GHERKIN("Gherkin is a business readable, domain specific language used by Cucumber framework to define test cases in a common format suitable for technical and non-technical users."),
+    GIT("Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."),
+    GITHUB("The world's leading software development platform, where you can store your GIT repositories and work with them."),
     JAVADOC("Is a documentation generator for the Java language for generating API documentation in HTML format from Java source code."), /** {@link JavaDocumentation} */
     JUNIT("JUnit is a unit testing framework for Java programming language."),
     IMMUTABLE_OBJECT("An immutable object is an object whose internal state remains constant after it has been entirely created. For example String is immutable. When calling String method replace(), our String is not updated, but new String is created. Opposite of immutable object is mutable object."),
@@ -42,6 +47,7 @@ public enum JavaConceptsEnum {
     REGULAR_EXPRESSIONS("A regular expression is a sequence of characters that forms a search pattern."), /** {@link RegularExpressions} */
     REQUEST_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to construct an API request specifications. Opposite concept is ResponseSpecBuilder."),
     RESPONSE_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to verify an API responses. Opposite concept is RequestSpecBuilder."),
+    RESTASSURED("Java framework for testing REST APIs"),
     SELENIUM("Framework for automating browsers (Chrome, Edge, Firefox, ...) for UI (or even non-UI with headless option) testing."),
     SELENIUM_GRID("Selenium Grid is used to scale Selenium tests by distributing and running tests on several machines and manage multiple environments from a central point, making it easy to run the tests against a vast combination of browsers/OS."),
     SELENIUM_HEADLESS("Headless option of Selenium is an option where UI tests will be run without opening browser UI."),
@@ -52,6 +58,7 @@ public enum JavaConceptsEnum {
     STATIC_METHOD("Method that can be executed without creating an object of the class first"), /** {@link org.abstraction.StaticClassExample} */
     STATIC_VARIABLE("Variable that can be accessed without creating an object of the class first"), /** {@link org.abstraction.StaticClassExample} */
     STATIC_POLYMORPHISM("Polymorphism that is resolved during compiler time is known as static polymorphism. Method overloading can be considered as static polymorphism example."), /** {@link org.abstraction.MethodExamples} */
+    TESTNG("Java framework for test automation. This framework provides: annotations, flexible test configuration, parametrized tests, multithread testing, ..."),
     THREAD("Threads allows a program to operate more efficiently by doing multiple things at the same time."), /** {@link Threads1} and {@link Threads2} */
     THREAD_SAFE("This means that different threads can access the same resources without exposing erroneous behavior or producing unpredictable results. Thread safety is not achieved automatically in Java, but must be achieved by programmer."),
     TYPE_CASTING("Type casting is when you assign a value of one primitive data type to another type."),
