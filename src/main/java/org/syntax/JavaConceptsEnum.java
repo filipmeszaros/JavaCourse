@@ -40,6 +40,8 @@ public enum JavaConceptsEnum {
     POJO("Plain Old Java Object - a straightforward type with no references to any particular frameworks. POJO usually contains getters and setters to achieve Encapsulation."), /** {@link org.abstraction.Encapsulation} */
     POLYMORPHISM("This Java OOP concept lets programmers use the same word to mean different things in different contexts. Polymorphism in Java works by using a reference to a parent class to affect an object in the child class. Another form of polymorphism in Java are: method overloading and method overriding."), /** {@link org.inheritance.InheritanceExample} */
     REGULAR_EXPRESSIONS("A regular expression is a sequence of characters that forms a search pattern."), /** {@link RegularExpressions} */
+    REQUEST_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to construct an API request specifications. Opposite concept is ResponseSpecBuilder."),
+    RESPONSE_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to verify an API responses. Opposite concept is RequestSpecBuilder."),
     SELENIUM("Framework for automating browsers (Chrome, Edge, Firefox, ...) for UI (or even non-UI with headless option) testing."),
     SELENIUM_GRID("Selenium Grid is used to scale Selenium tests by distributing and running tests on several machines and manage multiple environments from a central point, making it easy to run the tests against a vast combination of browsers/OS."),
     SELENIUM_HEADLESS("Headless option of Selenium is an option where UI tests will be run without opening browser UI."),
