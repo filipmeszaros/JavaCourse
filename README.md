@@ -54,3 +54,6 @@ Each functionality is divided a to different packages, that can be run separatel
 1. For UI testing frameworks, continue with classes in packages *testng* and *cucumber*
 1. For API testing, continue with classes in package *apitesting*
 
+### Author
+- Name: Mgr. Filip Mészáros
+- LinkedIn: https://www.linkedin.com/in/filip-meszaros/

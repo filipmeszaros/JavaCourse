@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Deserialization - In Rest Assured context is a process of converting a response body in form of JSON
@@ -72,6 +74,9 @@ public class DeserializationAndSerialization {
 
         String objectAsJSON = objectMapper.writeValueAsString(jsonObject);   //this method will serialize JSON object to JSON string
         System.out.println("JSON object serialized to JSON String: " + objectAsJSON);
+
+        assertTrue("JSON string contains correct name", objectAsJSON.contains("\"name\":\"Serialized object\""));
+        assertTrue("JSON string contains correct purchaseAmount", objectAsJSON.contains("\"purchaseAmount\":1111"));
     }
 
     /**
@@ -102,6 +107,9 @@ public class DeserializationAndSerialization {
         System.out.println("jsonObject.getCourses().get(1).getTitle(): " + jsonObject.getCourses().get(1).getTitle());
         System.out.println("jsonObject.getCourses().get(1).getPrice(): " + jsonObject.getCourses().get(1).getPrice());
         System.out.println("jsonObject.getCourses().get(1).getCopies(): " + jsonObject.getCourses().get(1).getCopies());
+
+        assertTrue("JSON string contains correct name", jsonObject.getName().equals("example JSON"));
+        assertEquals("JSON string contains correct purchaseAmount", jsonObject.getDashboard().getPurchaseAmount(), 1162);
     }
 
     /**
@@ -128,6 +136,9 @@ public class DeserializationAndSerialization {
         System.out.println("jsonNode.path('courses').get(1).path('title').asText(): " + jsonNode.path("courses").get(1).path("title").asText());
         System.out.println("jsonNode.path('courses').get(1).path('price').asDouble(): " + jsonNode.path("courses").get(1).path("price").asDouble());
         System.out.println("jsonNode.path('courses').get(1).path('copies').asInt(): " + jsonNode.path("courses").get(1).path("copies").asInt());
+
+        assertTrue("JsonNode contains correct name", jsonNode.get("name").asText().equals("example JSON"));
+        assertEquals("JsonNode contains correct size of courses", jsonNode.path("courses").size(), 4);
     }
 
     /**
