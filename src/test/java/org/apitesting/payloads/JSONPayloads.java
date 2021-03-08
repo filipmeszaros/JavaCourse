@@ -12,22 +12,22 @@ public class JSONPayloads {
      * @return JSON payload for request body
      */
     public static String getAddPlaceRequest() {
-        return "{\r\n" +
-                "  \"location\": {\r\n" +
-                "    \"lat\": -38.383494,\r\n" +
-                "    \"lng\": 33.427362\r\n" +
-                "  },\r\n" +
-                "  \"accuracy\": 50,\r\n" +
-                "  \"name\": \"Stars and bucks coffee shop\",\r\n" +
-                "  \"phone_number\": \"(+91) 983 893 3937\",\r\n" +
-                "  \"address\": \"29, side layout, cohen 09\",\r\n" +
-                "  \"types\": [\r\n" +
-                "    \"shoe park\",\r\n" +
-                "    \"shop\"\r\n" +
-                "  ],\r\n" +
-                "  \"website\": \"http://rahulshettyacademy.com\",\r\n" +
-                "  \"language\": \"French-IN\"\r\n" +
-                "}\r\n" +
+        return "{\n" +
+                "  \"location\": {\n" +
+                "    \"lat\": -38.383494,\n" +
+                "    \"lng\": 33.427362\n" +
+                "  },\n" +
+                "  \"accuracy\": 50,\n" +
+                "  \"name\": \"Stars and bucks coffee shop\",\n" +
+                "  \"phone_number\": \"(+91) 983 893 3937\",\n" +
+                "  \"address\": \"29, side layout, cohen 09\",\n" +
+                "  \"types\": [\n" +
+                "    \"shoe park\",\n" +
+                "    \"shop\"\n" +
+                "  ],\n" +
+                "  \"website\": \"http://rahulshettyacademy.com\",\n" +
+                "  \"language\": \"French-IN\"\n" +
+                "}\n" +
                 "";
     }
 
@@ -38,10 +38,10 @@ public class JSONPayloads {
      * @return JSON payload for body
      */
     public static String getUpdatePlaceRequest(String place_id, String newAddress) {
-        return "{\r\n" +
-                "\"place_id\":\"" + place_id + "\",\r\n" +
-                "\"address\":\"" + newAddress + "\",\r\n" +
-                "\"key\":\"qaclick123\"\r\n" +
+        return "{\n" +
+                "\"place_id\":\"" + place_id + "\",\n" +
+                "\"address\":\"" + newAddress + "\",\n" +
+                "\"key\":\"qaclick123\"\n" +
                 "}";
     }
 
@@ -51,9 +51,9 @@ public class JSONPayloads {
      * @return JSON payload for body
      */
     public static String getDeletePlaceRequest(String place_id) {
-        return "{\r\n" +
-                "\"place_id\":\"" + place_id + "\",\r\n" +
-                "\"key\":\"qaclick123\"\r\n" +
+        return "{\n" +
+                "\"place_id\":\"" + place_id + "\",\n" +
+                "\"key\":\"qaclick123\"\n" +
                 "}";
     }
 
@@ -63,35 +63,35 @@ public class JSONPayloads {
      */
     public static String getCoursePriceJSON()
     {
-        return "{\r\n" +
-                "  \"name\" : \"example JSON\",\r\n" +
-                "  \"dashboard\": {\r\n" +
-                "    \"purchaseAmount\": 1162,\r\n" +
-                "    \"website\": \"rahulshettyacademy.com\"\r\n" +
-                "  },\r\n" +
-                "  \"courses\": [\r\n" +
-                "    {\r\n" +
-                "      \"title\": \"Selenium Python\",\r\n" +
-                "      \"price\": 49.99,\r\n" +
-                "      \"copies\": 6\r\n" +
-                "    },\r\n" +
-                "    {\r\n" +
-                "      \"title\": \"Cypress\",\r\n" +
-                "      \"price\": 39.99,\r\n" +
-                "      \"copies\": 4\r\n" +
-                "    },\r\n" +
-                "    {\r\n" +
-                "      \"title\": \"RPA\",\r\n" +
-                "      \"price\": 44.0,\r\n" +
-                "      \"copies\": 10\r\n" +
-                "    },\r\n" +
-                "     {\r\n" +
-                "      \"title\": \"Appium\",\r\n" +
-                "      \"price\": 39.5,\r\n" +
-                "      \"copies\": 7\r\n" +
-                "    }\r\n" +
-                "  ]\r\n" +
-                "}\r\n";
+        return "{\n" +
+                "  \"name\" : \"example JSON\",\n" +
+                "  \"dashboard\": {\n" +
+                "    \"purchaseAmount\": 1162,\n" +
+                "    \"website\": \"rahulshettyacademy.com\"\n" +
+                "  },\n" +
+                "  \"courses\": [\n" +
+                "    {\n" +
+                "      \"title\": \"Selenium Python\",\n" +
+                "      \"price\": 49.99,\n" +
+                "      \"copies\": 6\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"title\": \"Cypress\",\n" +
+                "      \"price\": 39.99,\n" +
+                "      \"copies\": 4\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"title\": \"RPA\",\n" +
+                "      \"price\": 44.0,\n" +
+                "      \"copies\": 10\n" +
+                "    },\n" +
+                "     {\n" +
+                "      \"title\": \"Appium\",\n" +
+                "      \"price\": 39.5,\n" +
+                "      \"copies\": 7\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n";
     }
 
     /**
@@ -101,9 +101,9 @@ public class JSONPayloads {
      * @return JSON payload for JIRA request to login
      */
     public static String getLoginToJiraRequest(String username, String password) {
-        return "{\r\n" +
-                    "\"username\": \"" + username + "\",\r\n" +
-                    "\"password\": \"" + password + "\"\r\n" +
+        return "{\n" +
+                    "\"username\": \"" + username + "\",\n" +
+                    "\"password\": \"" + password + "\"\n" +
                 "}";
     }
 
@@ -116,17 +116,17 @@ public class JSONPayloads {
      * @return JSON payload for JIRA create issue request
      */
     public static String getCreateJiraIssueRequest(String projectKey, String issueSummary, String issueDescription) {
-        return "{\r\n" +
-                "   \"fields\": {\r\n" +
-                        "\"project\": {\r\n" +
-                            "\"key\": \"" + projectKey + "\"\r\n" +
-                        "},\r\n" +
-                        "\"summary\": \"" + issueSummary + "\",\r\n" +
-                        "\"description\": \"" + issueDescription + "\",\r\n" +
-                        "\"issuetype\": {\r\n"+
-                            "\"name\": \"Bug\"\r\n" +
-                        "}\r\n" +
-                    "}\r\n" +
+        return "{\n" +
+                "   \"fields\": {\n" +
+                        "\"project\": {\n" +
+                            "\"key\": \"" + projectKey + "\"\n" +
+                        "},\n" +
+                        "\"summary\": \"" + issueSummary + "\",\n" +
+                        "\"description\": \"" + issueDescription + "\",\n" +
+                        "\"issuetype\": {\n"+
+                            "\"name\": \"Bug\"\n" +
+                        "}\n" +
+                    "}\n" +
                 "}";
     }
 
@@ -136,12 +136,12 @@ public class JSONPayloads {
      * @return JSON payload for adding a comment to JIRA issue
      */
     public static String getCreateJiraCommentRequest(String jiraComment) {
-        return "{\r\n" +
-                "   \"body\": \"" + jiraComment + "\",\r\n" +
-                "   \"visibility\": {\r\n" +
-                "       \"type\": \"role\",\r\n" +
-                "       \"value\": \"Administrators\"\r\n" +
-                "   }\r\n" +
+        return "{\n" +
+                "   \"body\": \"" + jiraComment + "\",\n" +
+                "   \"visibility\": {\n" +
+                "       \"type\": \"role\",\n" +
+                "       \"value\": \"Administrators\"\n" +
+                "   }\n" +
                 "}";
     }
 }

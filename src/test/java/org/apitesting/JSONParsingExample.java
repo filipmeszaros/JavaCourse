@@ -4,7 +4,6 @@ import io.restassured.path.json.JsonPath;
 import org.apitesting.payloads.JSONPayloads;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.Map;
 
 import static org.testng.AssertJUnit.assertEquals;
