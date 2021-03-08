@@ -15,7 +15,7 @@ Terminology:
 
 Maven commands:
 mvn clean
-mvn build                         - build project
+mvn compile                       - compile project
 mvn test                          - run all test methods
 mvn test -Dtest=MobileTest        - runs only tests in MobileTest class
 mvn test -PSmokeTests             - runs only tests configured in pom.xml in SmokeTests profile

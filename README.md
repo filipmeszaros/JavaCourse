@@ -50,9 +50,10 @@ Each functionality is divided a to different packages, that can be run separatel
 1. Continue with classes in package *abstraction*
 1. For advanced Java, continue with classes in package *streams*
 1. For UI testing, continue with classes in package *selenium*
-1. For UI testing patterns, continue with classes in package *designpatterns*
-1. For UI testing frameworks, continue with classes in packages *testng* and *cucumber*
+1. For UI testing design patterns, continue with classes in package *designpatterns*
+1. For testing frameworks, continue with classes in packages *testng* and *cucumber*
 1. For API testing, continue with classes in package *apitesting*
+1. If you want to learn how to create your own testing framework, see package *frameworkdevelopment*
 
 ### Author
 - Name: Mgr. Filip Mészáros

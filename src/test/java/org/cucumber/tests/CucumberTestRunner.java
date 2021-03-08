@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
  * 2, Use RunWith and CucumberOption annotations with features and glues
  * 3, Add Cucumber test runner from point 1 to testng.xml (see file cucumberTestNG.xml)
  *
+ * Note: you can try implementation of popular cucumber reporting tool for generating reports: maven-cucumber-reporting
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
