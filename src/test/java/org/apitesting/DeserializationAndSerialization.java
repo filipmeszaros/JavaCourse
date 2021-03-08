@@ -3,7 +3,9 @@ package org.apitesting;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
+import io.restassured.response.Response;
 import org.apitesting.payloads.JSONPayloads;
 import org.testng.annotations.Test;
 
@@ -26,7 +28,7 @@ import static io.restassured.RestAssured.given;
  * represents JSON format available in {@link JSONPayloads#getCoursePriceJSON()}.
  * Take look at that JSON and take a look at those classes, and see how those classes are mapped exactly to match our JSON.
  */
-public class Deserialization {
+public class DeserializationAndSerialization {
 
     /**
      * This test represents example of serialization, where you create object representing our JSON, and serialize it to JSON string.
@@ -74,7 +76,7 @@ public class Deserialization {
 
     /**
      * This test represents example of deserialization, where you receive JSON string and deserialize it to object mapping this JSON.
-     * Alternative way of deserialization example is in method {@link Deserialization#deserializationExample2()}
+     * Alternative way of deserialization example is in method {@link DeserializationAndSerialization#deserializationExample2()}
      */
     @Test
     public void deserializationExample() throws JsonProcessingException {
@@ -106,7 +108,7 @@ public class Deserialization {
      * This test represents another example of deserialization, where you receive JSON string and deserialize it with JsonNode.
      * For this, you don't need class structure of JSON representing your object.
      * Getting values from JsonNode object is done by Jackson framework itself.
-     * Alternative way of deserialization example is in method {@link Deserialization#deserializationExample()}
+     * Alternative way of deserialization example is in method {@link DeserializationAndSerialization#deserializationExample()}
      */
     @Test
     public void deserializationExample2() throws JsonProcessingException {
@@ -129,11 +131,11 @@ public class Deserialization {
     }
 
     /**
-     * Test that uses our object representing JSON directly in RestAssured GET query.
-     * Note: this is just an example and GET query won't work because we have a dummy url and dummy token, therefore test is ignored
+     * Test that will map our response of RestAssured GET request to our object representing JSON schema.
+     * Note: this is just an example and GET query won't work because we have a dummy url and dummy token, therefore this test is disabled
      */
     @Test(enabled = false)
-    public void restAssuredExample() {
+    public void restAssuredDeserializationExample() {
         ClassRepresentingJSON response = given()
                 .queryParam("access_token","TOKEN")
                 .expect()
@@ -149,7 +151,40 @@ public class Deserialization {
     }
 
     /**
-     * This class is representing JSON available from {@link JSONPayloads#getCoursePriceJSON()}.
+     * Test that will use our object representing JSON directly in RestAssured POST request.
+     * Compare it with test {@link DeserializationAndSerialization#serializationExample()} to see how to fill JSON object fully.
+     * Note: this is just an example and POST query won't work because we have a dummy url and dummy token, therefore this test is disabled
+     */
+    @Test(enabled = false)
+    public void restAssuredSerializationExample() {
+        RestAssured.baseURI = "https://example-url.com";
+        ClassRepresentingJSON jsonObject = new ClassRepresentingJSON(); //create our object representing JSON data
+
+        /*
+        Fill our object with some data that will be used in API request
+        Note: this object is filled only partially, as POST query won't work anyway
+        */
+        jsonObject.setName("Serialized object");
+
+        ClassRepresentingDashboardJSON dashboard = new ClassRepresentingDashboardJSON();
+        dashboard.setPurchaseAmount(1111);
+        dashboard.setWebsite("https://example.com");
+        jsonObject.setDashboard(dashboard);
+
+        Response response = given()
+                .queryParam("key","dummydata")
+                .body(jsonObject) //in body() method, instead of using JSON string, we can use JSON object directly
+                .when()
+                .post("/dummy/url")
+                .then()
+                .extract()
+                .response();
+
+        System.out.println("Response of POST query: " + response.toString());
+    }
+
+    /**
+     * This class represents JSON available from {@link JSONPayloads#getCoursePriceJSON()}.
      * name is simple variable
      * dashboard is nested JSON (JSON inside JSON) containing 2 variables: purchaseAmount and website
      * courses is array of 4 nested JSONs, each containing 3 variables: title, price, copies.

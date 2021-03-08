@@ -58,7 +58,7 @@ public class JSONPayloads {
     }
 
     /**
-     * Returns JSON in String format that we will use in class {@link org.apitesting.JSONParsingExample}
+     * Returns JSON in String format that we will use in classes {@link org.apitesting.JSONParsingExample} and {@link org.apitesting.DeserializationAndSerialization}
      * @return JSON in String format
      */
     public static String getCoursePriceJSON()
