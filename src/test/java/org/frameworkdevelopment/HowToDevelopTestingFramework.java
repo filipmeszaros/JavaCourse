@@ -28,7 +28,7 @@ package org.frameworkdevelopment;
  * 17, Integrate framework into CI/CD tool like Jenkins
  * 18, Implement parametrized Jenkins job to choose the global values at run time, like suite type (SmokeTests, RegressionTests, ...)
  * 19, ???
- * 20, Profit :-D 
+ * 20, Profit :-D
  */
 public class HowToDevelopTestingFramework {
     public static void main(String[] args) {

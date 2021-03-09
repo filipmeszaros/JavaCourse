@@ -54,6 +54,7 @@ Each functionality is divided a to different packages, that can be run separatel
 1. For testing frameworks, continue with classes in packages *testng* and *cucumber*
 1. For API testing, continue with classes in package *apitesting*
 1. If you want to learn how to create your own testing framework, see package *frameworkdevelopment*
+1. If you want to learn how to use Excel for testing data, see package *excel*
 
 ### Author
 - Name: Mgr. Filip Mészáros
