@@ -10,7 +10,9 @@ import org.apitesting.payloads.JSONPayloads;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
@@ -19,8 +21,10 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Deserialization - In Rest Assured context is a process of converting a response body in form of JSON
  *                   with JackSon/Gson/Johnzon framework (or with JAXB framework for XML) into a Java object.
- * Serialization - In Rest Assured context is a process of converting a Java object into Request body (payload)
+ *                   Deserialization: JSON String -> POJO object
+ * Serialization - In Rest Assured context is a process of converting a Java object (or HashMap) into Request body (payload)
  *                 in form of JSON with Jackson/Gson/Johnzon framework (or with JAXB framework for XML).
+ *                 Serialization: POJO object -> JSON String; HashMap -> JSON String
  *
  * How this works is that for JSON (or XML), you create plain old java class (POJO class) representing this JSON (or XML).
  * For each variable or array of JSON (or XML), you create a class variable or array representing these values.
@@ -40,7 +44,7 @@ public class DeserializationAndSerialization {
     public void serializationExample() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();      //create Jackson mapper that will handle mapping
         ClassRepresentingJSON jsonObject = new ClassRepresentingJSON(); //create our object representing JSON data
-        jsonObject.setName("Serialized object");  //we call function setName() which sets name of simple attribute
+        jsonObject.setName("POJO object serialized to JSON");  //we call function setName() which sets name of simple attribute
 
         /*
         When you want to fill out dashboard data, you need to create object of nested JSON,
@@ -74,9 +78,55 @@ public class DeserializationAndSerialization {
 
         String objectAsJSON = objectMapper.writeValueAsString(jsonObject);   //this method will serialize JSON object to JSON string
         System.out.println("JSON object serialized to JSON String: " + objectAsJSON);
+        //Now we can use this String objectAsJSON in RestAssured requests in body() method
 
-        assertTrue("JSON string contains correct name", objectAsJSON.contains("\"name\":\"Serialized object\""));
+        assertTrue("JSON string contains correct name", objectAsJSON.contains("\"name\":\"POJO object serialized to JSON\""));
         assertTrue("JSON string contains correct purchaseAmount", objectAsJSON.contains("\"purchaseAmount\":1111"));
+    }
+
+    /**
+     * Another way of serialization is to create a hashmap, and convert this hashmap to a JSON.
+     * This HashMap then can be used in RestAssured method body(),
+     * that can either contain String of JSON, or object representing JSON String, or HashMap
+     */
+    @Test
+    public void serializationExample2() throws JsonProcessingException {
+        Map<String, Object> jsonAsMap = new HashMap<>();
+        jsonAsMap.put("name", "Serialized JSON from HashMap");
+
+        //Create a map for nested JSON object
+        Map<String, Object> jsonDashboardMap = new HashMap<>();
+        jsonDashboardMap.put("purchaseAmount", 1162);
+        jsonDashboardMap.put("website", "https://www.example.com");
+        jsonAsMap.put("dashboard", jsonDashboardMap);    //create nested HashMap for nested JSON
+
+        //Create a maps for each course (nested JSONs)
+        Map<String, Object> jsonCourse1Map = new HashMap<>();
+        jsonCourse1Map.put("title", "First title");
+        jsonCourse1Map.put("price", 199.9);
+        jsonCourse1Map.put("copies", 5);
+        Map<String, Object> jsonCourse2Map = new HashMap<>();
+        jsonCourse2Map.put("title", "Second title");
+        jsonCourse2Map.put("price", 50.0);
+        jsonCourse2Map.put("copies", 19);
+
+        //Create an array courses with nested HashMaps
+        List<Map<String, Object>> courses = new ArrayList<>();
+        courses.add(jsonCourse1Map);
+        courses.add(jsonCourse2Map);
+
+        //Assign array of nested objects to our main HashMap
+        jsonAsMap.put("courses", courses);
+
+        //Now, our HashMap can be directly used in RestAssured requests, in method body().
+
+        //We can also map it to String directly, as was shown in previous test method.
+        ObjectMapper objectMapper = new ObjectMapper();
+        String mapAsJSON = objectMapper.writeValueAsString(jsonAsMap);
+        System.out.println("JSON HashMap serialized to JSON String: " + mapAsJSON);
+
+        assertTrue("JSON string contains correct name", mapAsJSON.contains("\"name\":\"Serialized JSON from HashMap\""));
+        assertTrue("JSON string contains correct purchaseAmount", mapAsJSON.contains("\"purchaseAmount\":1162"));
     }
 
     /**
@@ -184,7 +234,12 @@ public class DeserializationAndSerialization {
 
         Response response = given()
                 .queryParam("key","dummydata")
-                .body(jsonObject) //in body() method, instead of using JSON string, we can use JSON object directly
+                /*
+                in body() method, instead of using JSON String, we can use JSON object directly as shown in test method serializationExample().
+                Alternative is to use HashMap here as shown in test method serializationExample2().
+                Another alternative is to write JSON in String directly
+                 */
+                .body(jsonObject)
                 .when()
                 .post("/dummy/url")
                 .then()
