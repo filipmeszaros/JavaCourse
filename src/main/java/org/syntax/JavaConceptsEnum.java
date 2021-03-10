@@ -12,8 +12,12 @@ public enum JavaConceptsEnum {
     ABSTRACT_METHOD("A method that is declared but not defined. Contains only method signature with no body. If our class contains at least abstract method, whole class must be abstract."), /** {@link org.abstraction.AbstractClassExample} */
     ABSTRACT_CLASS("An abstract class outlines the methods but not necessarily implements all the methods. Abstract class is a common way to achieve partial abstraction in Java."),          /** {@link org.abstraction.AbstractClassExample} */
     ACCESS_MODIFIERS("They decide the scope of a data member, method or class. Four types of access specifiers: public, private, protected, default (we do not need to explicitly mention default - if we do not specify access specifier, it is considered as default)."), /** {@link org.packages.packageC.AccessModifiersClass} */
+    BACK_END("Defines how something behaves. It stores and arranges data, and also makes sure everything on the client-side of the website or application works fine. Opposite concept is Frontend. Backend never imports Frontend."),
+    BOTTOM_UP_APPROACH("Design or testing approach in which you first start with low level stuff (more detailed) and then proceed with high level stuff (more abstract). Opposite concept is Top-Down approach."),
     CLASS("Template (blueprint) for building an Object. This template contains class variables, and class methods (functions)."), /** {@link org.abstraction.OOPExample} */
     CONSTRUCTOR("Constructor is a method which name is same as class name and it does not return any value. This method is called as soon as object of class is created. Constructor can contain parameters (such constructors are known as parametrized constructor). Each class can contain multiple constructors with different parameters."), /** {@link org.abstraction.OOP} */
+    CONTINUOUS_DELIVERY("Continuous delivery picks up where continuous integration ends. CD automates the delivery of applications to selected infrastructure environments. Continuous Integration + Continuous Development = CI/CD."),
+    CONTINUOUS_INTEGRATION("Continuous integration is a coding philosophy and set of practices that drive development teams to implement small changes and check in code to version control repositories frequently."),
     CUCUMBER("Cucumber is the BDD (Behaviour Driven Development) framework for running automated tests."),
     DESERIALIZATION("In Rest Assured context is a process of converting a response body in form of JSON with JackSon/Gson/Johnzon framework (or with JAXB framework for XML) into a Java object. Opposite concept is serialization."),
     DESIGN_PATTER("A design pattern is a well-described solution to a common software problem."),
@@ -21,6 +25,7 @@ public enum JavaConceptsEnum {
     DYNAMIC_POLYMORPHISM("Dynamic polymorphism is a process in which a call to an overridden method is resolved at runtime. Also called runtime polymorphism."),  /** {@link org.inheritance.InheritanceExample} */
     ENCAPSULATION("This is the practice of keeping fields within a class private, then providing access to them via public methods. It’s a protective barrier that keeps the data and code safe within the class itself."), /** {@link org.abstraction.Encapsulation} */
     FRAMEWORK("Frameworks are bundles of prewritten code used by developers to create apps using selected programming language."),
+    FRONT_END("Defines how something looks. Front end development is the part of development that creates elements of a website or an application, which are directly viewable and accessible by the end-user or client. Opposite concept is backend. Frontend imports backend and works with it."),
     GENERALIZATION("Generalization is the process of extracting shared characteristics from two or more classes, and combining them into a generalized superclass. Is opposite concept of specialization"), /** {@link org.inheritance.InheritanceExample} and class {@link org.inheritance.Vehicle} */
     GETTERS("Getters are public methods of class that are retrieving private class variables to achieve Encapsulation"), /** {@link org.abstraction.Encapsulation} */
     GHERKIN("Gherkin is a business readable, domain specific language used by Cucumber framework to define test cases in a common format suitable for technical and non-technical users."),
@@ -47,8 +52,8 @@ public enum JavaConceptsEnum {
     REGULAR_EXPRESSIONS("A regular expression is a sequence of characters that forms a search pattern."), /** {@link RegularExpressions} */
     REQUEST_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to construct an API request specifications. Opposite concept is ResponseSpecBuilder."),
     RESPONSE_SPEC_BUILDER("Is an utility of RestAssured framework, that is used to verify an API responses. Opposite concept is RequestSpecBuilder."),
-    RESTASSURED("Java framework for testing REST APIs"),
-    SELENIUM("Framework for automating browsers (Chrome, Edge, Firefox, ...) for UI (or even non-UI with headless option) testing."),
+    RESTASSURED("RestAssured is Java framework for automatic testing of REST APIs."),
+    SELENIUM("Framework for automating web browsers (Chrome, Edge, Firefox, ...) for UI (or even non-UI with headless option) testing."),
     SELENIUM_GRID("Selenium Grid is used to scale Selenium tests by distributing and running tests on several machines and manage multiple environments from a central point, making it easy to run the tests against a vast combination of browsers/OS."),
     SELENIUM_HEADLESS("Headless option of Selenium is an option where UI tests will be run without opening browser UI."),
     SERIALIZATION("In Rest Assured context is a process of converting a Java object into Request body (payload) in form of JSON with Jackson/Gson/Johnzon framework (or with JAXB framework for XML). Opposite concept is deserialization"),
@@ -59,6 +64,7 @@ public enum JavaConceptsEnum {
     STATIC_VARIABLE("Variable that can be accessed without creating an object of the class first"), /** {@link org.abstraction.StaticClassExample} */
     STATIC_POLYMORPHISM("Polymorphism that is resolved during compiler time is known as static polymorphism. Method overloading can be considered as static polymorphism example."), /** {@link org.abstraction.MethodExamples} */
     TESTNG("Java framework for test automation. This framework provides: annotations, flexible test configuration, parametrized tests, multithread testing, ..."),
+    TOP_DOWN_APPROACH("Design or testing approach in which you first start with high level stuff (more abstract) and then proceed with low level stuff (more detailed). Opposite concept is Bottom-Up approach."),
     THREAD("Threads allows a program to operate more efficiently by doing multiple things at the same time."), /** {@link Threads1} and {@link Threads2} */
     THREAD_SAFE("This means that different threads can access the same resources without exposing erroneous behavior or producing unpredictable results. Thread safety is not achieved automatically in Java, but must be achieved by programmer."),
     TYPE_CASTING("Type casting is when you assign a value of one primitive data type to another type."),
