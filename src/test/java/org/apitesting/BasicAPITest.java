@@ -5,7 +5,6 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.apitesting.payloads.JSONPayloads;
@@ -15,7 +14,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * API - Application Programming Interface.
@@ -201,13 +199,13 @@ public class BasicAPITest {
      * Also, we have some response validations, that are also identical in all tests.
      * In this test, we will setup RequestSpecBuilder and ResponseSpecBuilder objects, that can be used in all of our tests
      * in this class, and it will simplify our codebase when we are running multiple tests.
-     * Note: in this example, we will run only one test just to demonstrate this concept.
-     *       Imagine that you are running multiple tests, and you save pain of writing all requests and responses for each test.
      *
      * RequestSpecBuilder - utility that is used to construct a API request specifications.
      * ResponseSpecBuilder - utility that is used to verify an API responses.
+     *
+     * Note: run this test as a last one to not mess with unique place_id
      */
-    @Test
+    @Test(dependsOnMethods = {"exampleOfGETRequest", "exampleOfPUTRequest", "exampleOfPOSTRequest", "exampleOfDELETERequest"})
     public void requestSpecBuilderExample() {
         RequestSpecification requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
@@ -220,7 +218,7 @@ public class BasicAPITest {
                 .expectContentType(ContentType.JSON)
                 .build();
 
-        String response = given()
+        String POSTresponse = given()
                 .spec(requestSpecification)                 //for general request values, use our object
                 .body(JSONPayloads.getAddPlaceRequest())    //for specific request values, use specific values
                 .when()
@@ -233,7 +231,31 @@ public class BasicAPITest {
                 .response()
                 .asString();
 
-        System.out.println("Response of POST request: " + response);
-        assertTrue("Status of POST request is correct", response.contains("\"status\":\"OK\""));
+        place_id = new JsonPath(POSTresponse).getString("place_id");  //update unique place_id of our newly create place
+        assertEquals("Status of POST request is correct", "OK", new JsonPath(POSTresponse).getString("status"));
+
+        String GETresponse = given()
+                .spec(requestSpecification)                //use our general request values again
+                .queryParam("place_id", place_id)
+                .when()
+                .get("maps/api/place/get/json")
+                .then()
+                .spec(responseSpecification)              //use our general response asserts again
+                .extract()
+                .response().asString();
+
+        assertEquals("Name of place is correct", "Stars and bucks coffee shop", new JsonPath(GETresponse).getString("name"));
+
+        String DELETEresponse = given()
+                .spec(requestSpecification)               //use our general request values again
+                .body(JSONPayloads.getDeletePlaceRequest(place_id))
+                .when()
+                .delete("maps/api/place/delete/json")
+                .then()
+                .spec(responseSpecification)              //use our general response asserts again
+                .extract()
+                .response().asString();
+
+        assertEquals("Status of DELETE operation is correct", "OK", new JsonPath(DELETEresponse).getString("status"));
     }
 }
