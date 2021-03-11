@@ -20,7 +20,7 @@ public class MVCApplication {
     public static void runApp() {
         Model model = new Model();
 
-        //View implements model
+        //View requests data from model
         View view = new View(model);
 
         //Controller works with model and view. It gets data from model, and sends instruction to view.
