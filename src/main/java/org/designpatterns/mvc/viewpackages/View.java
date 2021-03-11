@@ -1,6 +1,6 @@
-package org.designpatterns.modelviewcontroller.viewpackages;
+package org.designpatterns.mvc.viewpackages;
 
-import org.designpatterns.modelviewcontroller.modelpackages.Model;
+import org.designpatterns.mvc.modelpackages.Model;
 
 /**
  * View represents your GUI (Graphical User Interface) of your application (front-end of your application).

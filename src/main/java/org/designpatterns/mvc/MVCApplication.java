@@ -1,8 +1,8 @@
-package org.designpatterns.modelviewcontroller;
+package org.designpatterns.mvc;
 
-import org.designpatterns.modelviewcontroller.controllerpackages.Controller;
-import org.designpatterns.modelviewcontroller.modelpackages.Model;
-import org.designpatterns.modelviewcontroller.viewpackages.View;
+import org.designpatterns.mvc.controllerpackages.Controller;
+import org.designpatterns.mvc.modelpackages.Model;
+import org.designpatterns.mvc.viewpackages.View;
 
 /**
  * MVC - Model/View/Controller application.

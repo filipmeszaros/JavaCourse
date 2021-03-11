@@ -1,7 +1,7 @@
-package org.designpatterns.modelviewcontroller.controllerpackages;
+package org.designpatterns.mvc.controllerpackages;
 
-import org.designpatterns.modelviewcontroller.modelpackages.Model;
-import org.designpatterns.modelviewcontroller.viewpackages.View;
+import org.designpatterns.mvc.modelpackages.Model;
+import org.designpatterns.mvc.viewpackages.View;
 
 /**
  * Controller contains business logic of your application (brain of your application).

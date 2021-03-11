@@ -1,4 +1,4 @@
-package org.designpatterns.modelviewcontroller.modelpackages;
+package org.designpatterns.mvc.modelpackages;
 
 /**
  * Model represents data of your application.
