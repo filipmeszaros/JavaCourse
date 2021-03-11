@@ -10,8 +10,8 @@ import static org.testng.Assert.assertEquals;
  *
  * To be able to do that, the observable object needs to keep references to the observers.
  *
- * Our example:
- * Playlist (observable) can notify Subscribers (observers) when new song is added to a playlist.
+ * In our example:
+ * Playlist (observable) will notify Subscribers (observers) when new song is added to a playlist.
  * Subscriber (observer) is forced to implement method update(), which is called by Playlist each time playlist is changed.
  */
 public class ObserverExample {
