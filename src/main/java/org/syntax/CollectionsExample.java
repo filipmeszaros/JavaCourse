@@ -41,7 +41,7 @@ public class CollectionsExample {
     }
 
     /**
-     * List = ordered collection (also known as a sequence) that can contain duplicate elements
+     * List - ordered collection (also known as a sequence) that can contain duplicate elements
      * ArrayList  - has a regular array inside it. If the array is not big enough, a new, larger array is created
      *              to replace the old one and the old one is removed.
      *              When it is best to use: - if you want to access random items frequently
@@ -93,7 +93,8 @@ public class CollectionsExample {
     }
 
     /**
-     * Set = unordered collection that does not contain duplicate elements
+     * Set - unordered collection that does not contain duplicate elements
+     *     - Example: can be used to store values that should be in collection only once
      */
     public static void setExamples() {
         HashSet<String> set = new HashSet<>();
@@ -121,7 +122,7 @@ public class CollectionsExample {
     }
 
     /**
-     * Map = object that maps keys to values. Map cannot contain duplicate values.
+     * Map - object that maps keys to values. Map cannot contain duplicate values.
      */
     public static void mapExamples() {
         HashMap<String, String> map = new HashMap<>();   //Map of Key String to Value String
@@ -187,6 +188,6 @@ public class CollectionsExample {
         Collections.shuffle(list1);
         System.out.println("Shuffled list1: " + list1);
         Collections.replaceAll(list1, "element1", "NEW ELEMENT");
-        System.out.println("List1 with replaced element: " + list1);
+        System.out.println("List1 with replaced elements: " + list1);
     }
 }

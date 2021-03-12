@@ -70,7 +70,7 @@ public class StreamsExample {
         List<String> namesFilteredAndSorted = namesArray
                   .stream()        //1, create a stream
                   .distinct()      //2, do intermediate operation that will filter reoccurring stream elements
-                  .filter(name -> name.startsWith("A"))   //2, do another intermediate operation that will filter only names starging with "A"
+                  .filter(name -> name.startsWith("A"))   //2, do another intermediate operation that will filter only names starting with "A"
                   .sorted()        //2, do another intermediate operation that will sort results
                   .collect(Collectors.toList()); //3; do terminal stream operation
 
