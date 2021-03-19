@@ -32,12 +32,10 @@ mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromehead
   <version>1.0</version>
 
   <name>JavaCourse</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/BIOHAZARDIQ/JavaCourse</url>
 
   <!-- POM.xml is file for maven, in which you can configure which JAVA version will be used, or which plugins will
    be used in project-->
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
@@ -81,7 +79,7 @@ mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromehead
       <version>5.0.6</version>
     </dependency>
 
-    <!-- Selenium: for running Selenium browser tests-->
+    <!-- Selenium: for running Selenium browser tests -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -147,6 +145,13 @@ mvn test -Dbrowser=chromeheadless - runs maven with parameter browser=chromehead
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>6.10.0</version>
+    </dependency>
+
+    <!-- Pitest: mutation testing for Java -->
+    <dependency>
+      <groupId>org.pitest</groupId>
+      <artifactId>pitest</artifactId>
+      <version>1.6.4</version>
     </dependency>
 
     <!-- Apache POI: for working with Excel -->
