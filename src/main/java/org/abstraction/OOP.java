@@ -47,12 +47,10 @@ public class OOP {
     public OOP() {
         System.out.println("Constructor OOP() of class OOP was executed");
     }
-
     public OOP(int number) {
         System.out.println("Constructor OOP(int number) of class OOP was executed, with number: " + number);
         classVariableInteger = number;   //we assign value passed to constructor to class variable
     }
-
     public OOP(String str) {
         System.out.println("Constructor OOP(String str) of class OOP was executed, with string: " + str);
         classVariableString = str;       //we assign value passed to constructor to class variable
